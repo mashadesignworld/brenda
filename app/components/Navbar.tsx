@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Navbar() {
@@ -30,6 +31,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo - Adjust width/height as needed for your logo */}
         <div className="flex-shrink-0">
+          <Link href="/" >
           <Image
             src="/logo.png" // Ensure this path is correct relative to your public folder
             alt="Brenda Keya"
@@ -40,7 +42,7 @@ export default function Navbar() {
             // OR adjust conditionally based on your logo's final colors and desired effect
             // If your SVG already has colors, you likely won't need 'filter brightness-0 invert'
             className={scrolled ? "" : ""} // If your SVG has fixed colors, or you handle color change differently
-          />
+          /></Link>
         </div>
 
         {/* Desktop Links */}

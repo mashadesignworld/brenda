@@ -1,6 +1,6 @@
 // tailwind.config.js
 /* Import Font Awesome CSS */
-import '@fortawesome/fontawesome-svg-core/styles.css';
+
 import typography from '@tailwindcss/typography'; // Import the plugin
 /** @type {import('tailwindcss').Config} */
 

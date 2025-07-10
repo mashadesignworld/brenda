@@ -81,7 +81,7 @@ export default function Hero() {
 
           {/* Form Sub-headline */}
           <p className="text-md md:text-lg mb-6 text-gray-700">
-            Listen to this FREE audio from Brenda Keya and learn the 3 steps that'll change your life, fast.
+            Listen to this FREE audio from Brenda Keya and learn the 3 steps that will change your life, fast.
           </p>
 
           {/* Form */}
@@ -106,7 +106,7 @@ export default function Hero() {
 
           {/* Disclaimer Text */}
           <p className="text-xs text-gray-600 mt-4">
-            By entering your info, you'll become an insider - with FREE access to exclusive insights, private Q&As, and inspiring episodes of Brenda's content, delivered with love to your inbox. (Unsubscribe anytime in a click). You also agree to our <a href="#" className="underline hover:text-blue-600">Terms of Use</a> and <a href="#" className="underline hover:text-blue-600">Privacy Policy</a>.
+            By entering your info, you will become an insider - with FREE access to exclusive insights, private Q&As, and inspiring episodes of Brenda's content, delivered with love to your inbox. (Unsubscribe anytime in a click). You also agree to our <a href="#" className="underline hover:text-blue-600">Terms of Use</a> and <a href="#" className="underline hover:text-blue-600">Privacy Policy</a>.
           </p>
         </div>
       </div>

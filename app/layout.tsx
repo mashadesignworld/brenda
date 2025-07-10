@@ -1,6 +1,8 @@
 // app/layout.tsx
 import './globals.css';
 import { EB_Garamond, Great_Vibes, Dancing_Script } from 'next/font/google'; // Import new fonts
+import FooterSection from './components/FooterSection';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
 // Configure EB Garamond
 const ebGaramond = EB_Garamond({
@@ -36,6 +38,8 @@ export default function RootLayout({
     >
       <body>
         {children}
+        <FooterSection />
+        {/* Ensure the FooterSection is included at the bottom of the layout */}
       </body>
     </html>
   );

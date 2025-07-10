@@ -45,11 +45,11 @@ export default function Hero() {
         <div className="w-full lg:w-1/2 flex flex-col items-start justify-center text-left">
           {/* Main Headline */}
           {/* Responsive font sizes and line height. */}
-          <h1 className="text-white text-5xl md:text-7xl lg:text-6xl font-extrabold leading-tight mb-6">
-            The Aligned Voice |
-            <br /> {/* This line break will ALWAYS be present */}
-            Presence,  Diplomacy,  Sustainability. 
-          </h1>
+          <h1 className="text-white text-1xl md:text-2xl lg:text-2xl font-light leading-tight mb-6">
+           | The Aligned Voice |
+           </h1>
+          <h2 className="text-white text-5xl md:text-7xl lg:text-6xl font-extrabold leading-tight mb-6"> 
+            Presence,  Diplomacy,  Sustainability. </h2>
 
           {/* Sub-headline */}
           {/* Responsive font sizes. */}

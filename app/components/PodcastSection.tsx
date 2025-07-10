@@ -58,7 +58,7 @@ export default function PodcastSection() {
           <video
             ref={videoRef}
             src="/video.mp4" // Path to your video file in the public folder
-            poster="/podcast.jpg" // This image will be shown when the video is not playing
+            poster="/2.jpg" // This image will be shown when the video is not playing
             className="w-full h-auto object-cover rounded-lg"
             controls={isPlaying} // Show default video controls only when playing
             onEnded={() => setIsPlaying(false)} // Reset play state when video finishes

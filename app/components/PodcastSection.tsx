@@ -26,18 +26,19 @@ export default function PodcastSection() {
         <div className="w-full lg:w-1/2 text-gray-900 text-center lg:text-left lg:pr-16">
           {/* Small uppercase header, mimicking "TIME GENIUS" */}
           <p className="text-sm uppercase font-bold text-gray-600 mb-4 tracking-wider">
-            The Brenda Keya Podcast
+            Podcast
           </p>
 
           {/* Main Headline, adapted to Brenda's theme from "Take Back Your Time. Get Back Your Life." */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-            Unlock Your Potential. <br className="hidden md:inline"/> Live Your Purpose.
+        In Session with Brenda Keya <br/>
           </h2>
 
           {/* Description of the podcast */}
           <p className="text-lg md:text-xl leading-relaxed mb-8 text-gray-700">
-            Dive into insightful conversations with Brenda Keya as she shares transformative strategies for personal growth, career advancement in demanding industries like cement, and achieving a life of true fulfillment beyond financial success.
+           Conversations at the intersection of soul, systems, and sustainability.
           </p>
+          <p className="text-lg md:text-xl leading-relaxed mb-8 text-gray-700">In Session with Brenda Keya is a space for deep, honest, and transformative conversations. Each session explores how our inner world (soul), the structures we navigate (systems), and the planet we call home (sustainability) shape our lives, choices, and collective future.</p>
 
           {/* Call to Action Button */}
           <div>

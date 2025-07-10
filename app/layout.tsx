@@ -3,6 +3,7 @@ import './globals.css';
 import { EB_Garamond, Great_Vibes, Dancing_Script } from 'next/font/google'; // Import new fonts
 import FooterSection from './components/FooterSection';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import Navbar from './components/Navbar'; // Ensure Navbar is imported correctly
 
 // Configure EB Garamond
 const ebGaramond = EB_Garamond({
@@ -37,6 +38,7 @@ export default function RootLayout({
       className={`${ebGaramond.variable} ${greatVibes.variable} ${dancingScript.variable}`}
     >
       <body>
+        <Navbar />
         {children}
         <FooterSection />
         {/* Ensure the FooterSection is included at the bottom of the layout */}

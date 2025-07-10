@@ -21,7 +21,7 @@ export default function YoutubeSection() {
           <strong>Personal brand </strong> uniting her impact consultancy and soul-led leadership coaching.
         </p>
         <p className="text-gray-700 mb-6">
-           From soul to systems, I help leaders become aligned voices, rooted, resonant and ready<br/> <strong>  Brenda N. Keya</strong>
+           &quot;From soul to systems, I help leaders become aligned voices, rooted, resonant and ready&quot;<br/> <strong>  Brenda N. Keya</strong>
         </p>
 
         {/* Listen Buttons */}

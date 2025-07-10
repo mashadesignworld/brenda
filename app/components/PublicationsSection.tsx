@@ -43,7 +43,7 @@ export default function PublicationsSection() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white"> {/* White background and vertical padding */}
+    <section id="publications" className="py-16 md:py-24 bg-white"> {/* White background and vertical padding */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">

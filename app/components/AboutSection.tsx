@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function AboutSection() {
   return (
-    <section className="relative w-full min-h-screen flex flex-col lg:flex-row">
+    <section id="aboutme" className="relative w-full min-h-screen flex flex-col lg:flex-row">
 
       {/* Left Column: Image of Brenda */}
       <div className="relative w-full h-[60vh] lg:h-auto lg:min-h-full lg:w-1/2">

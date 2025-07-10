@@ -49,7 +49,7 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center space-x-8">
           <li>
             <a
-              href="/about"
+              href="#aboutme"
               className={`nav-link-underline-effect text-lg font-medium ${
                 scrolled ? "text-gray-800" : "text-black"
               }`}
@@ -57,16 +57,7 @@ export default function Navbar() {
               About
             </a>
           </li>
-          <li>
-            <a
-              href="#start-here"
-              className={`nav-link-underline-effect text-lg font-medium ${
-                scrolled ? "text-gray-800" : "text-black"
-              }`}
-            >
-              Start Here
-            </a>
-          </li>
+      
           <li>
             <a
               href="#podcast"
@@ -79,23 +70,23 @@ export default function Navbar() {
           </li>
           <li>
             <a
-              href="#live-event"
+              href="#shows"
               className={`nav-link-underline-effect text-lg font-medium ${
                 scrolled ? "text-gray-800" : "text-black"
               }`}
             >
-              Live Event
+              Shows
             </a>
           </li>
           {/* Example of dropdown for "Courses & Coaching" - simplified for now */}
           <li>
             <a
-              href="#courses-coaching"
+              href="#publications"
               className={`nav-link-underline-effect text-lg font-medium ${
                 scrolled ? "text-gray-800" : "black"
               }`}
             >
-              Courses & Coaching
+              Publications
             </a>
           </li>
           <li>

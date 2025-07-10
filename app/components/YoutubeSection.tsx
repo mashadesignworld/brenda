@@ -5,7 +5,7 @@ import { FaYoutube, FaSpotify } from "react-icons/fa";
 
 export default function YoutubeSection() {
   return (
-    <section className="bg-gradient-to-r from-yellow-50 to-green-50 py-16 px-4 md:px-16 flex flex-col lg:flex-row items-center justify-between gap-12">
+    <section id="shows" className="bg-gradient-to-r from-yellow-50 to-green-50 py-16 px-4 md:px-16 flex flex-col lg:flex-row items-center justify-between gap-12">
       {/* Left Content */}
       <div className="max-w-2xl">
         <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">

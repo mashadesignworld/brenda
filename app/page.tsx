@@ -10,6 +10,7 @@ export default function Home() {
   return (
     <>
     <Navbar />
+    
      <main>
         <Hero />
         <AboutSection /> {/* Add your new About section here */}

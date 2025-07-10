@@ -14,7 +14,7 @@ export default function PublicationsSection() {
       year: "2025",
       description: "The cement industry accounts for approximately 8% of global CO2 emissions, making it a critical focus for decarbonization under the Paris Climate Agreement’s net-zero target by 2050",
       link: "#", // Replace with actual book link
-      coverImage: "/images/book-cover.png", // Placeholder: Add your image in /public/images
+      coverImage: "/images/book-cover.jpg", // Placeholder: Add your image in /public/images
       buttonText: "READ MORE"
     },
     {
@@ -23,7 +23,7 @@ export default function PublicationsSection() {
       title: "GREEN STRATEGY PROPOSAL",
       author: "BY BRENDA",
       year: "2025",
-      description: "Following recent engagements and insights gathered from the Carbon Credit Markets Conference, this proposal aims to provide a strategic framework for positioning East African Portland Cement (EAPC) as a green market leader. ",
+      description: "Informed by current market dynamics and recent industry events, this proposal details a strategy for a company to achieve leadership in sustainable practices. ",
       link: "#", // Replace with actual podcast link
       coverImage: "/images/book-cover1.jpg", // Placeholder: Add your image in /public/images
       buttonText: "LISTEN NOW"
@@ -34,8 +34,8 @@ export default function PublicationsSection() {
       title: "WAKA GRAM PORTFOLIO",
       author: "BY BRENDA",
       year: "2025",
-      description: "Our Carbon Forwarrd program aligns corporate sustainability goals with measurable environmental and social outcomes",
-      link: "#", // Replace with actual article link
+      description: "Our Carbon Forward program aligns corporate sustainability goals with measurable environmental and social outcomes",
+      link: "https://gram.wakaafrica.org/", // Replace with actual article link
       coverImage: "/images/book-cover2.jpg", // Placeholder: Add your image in /public/images
       buttonText: "READ MORE"
     },

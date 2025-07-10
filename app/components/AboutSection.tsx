@@ -50,7 +50,7 @@ She believes voice isn’t something to find but something to remember. And pres
         {/* Call to Action Button - Adjusted colors for pink background */}
         <div className="mt-4">
           <a
-            href="#more-about-brenda"
+            href="/about"
             className="inline-block bg-white text-brand-pink border-2 border-white
                        px-8 py-3 font-bold uppercase text-lg tracking-wider
                        hover:bg-blue-600 hover:text-white hover:border-brand-light-pink transition-colors duration-300"

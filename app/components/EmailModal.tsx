@@ -7,8 +7,14 @@ export default function EmailModal() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShow(true), 5000); // Show after 5s
-    return () => clearTimeout(timer);
+    const hasSeen = localStorage.getItem("seenEmailModal");
+    if (!hasSeen) {
+      const timer = setTimeout(() => {
+        setShow(true);
+        localStorage.setItem("seenEmailModal", "true");
+      }, 5000); // Delay in ms
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (
@@ -18,44 +24,94 @@ export default function EmailModal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[1000] bg-black/60 flex items-center justify-center"
+          className="fixed inset-0 z-[1000] bg-black/60 flex items-center justify-center px-4"
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            className="bg-white rounded-lg p-8 w-full max-w-lg shadow-xl"
+            className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl border border-pink-200 relative"
           >
-            <div className="text-right mb-2">
-              <button onClick={() => setShow(false)} className="text-gray-600 hover:text-black text-xl">
-                &times;
-              </button>
-            </div>
+            <button
+              onClick={() => setShow(false)}
+              className="absolute top-3 right-4 text-gray-400 hover:text-black text-xl font-bold"
+            >
+              ×
+            </button>
 
-            <h2 className="text-2xl font-bold mb-2">Get the Clarity Blueprint</h2>
-            <p className="text-gray-700 mb-4">Enter your email to receive a free download directly to your inbox.</p>
+            <h2 className="text-2xl font-bold text-pink-600 mb-2">
+              Get the Clarity Blueprint
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Enter your email and name to receive payment instructions and a
+              bonus audio.
+            </p>
 
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                alert("🎉 Email submitted! We'll send you the blueprint.");
-                setShow(false);
+                const form = e.currentTarget;
+                const name = form.name?.value || "Guest";
+                const email = form.email.value;
+                const whatsapp = form.whatsapp?.value || "";
+
+                try {
+                  const res = await fetch("/api/sendMail", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, email, whatsapp }),
+                  });
+
+                  if (res.ok) {
+                    alert("🎉 Email sent! Check your inbox.");
+                    form.reset();
+                    setShow(false);
+                  } else {
+                    const err = await res.json();
+                    alert("❌ Error: " + err.message);
+                  }
+                } catch (err) {
+                  console.error(err);
+                  alert("❌ Server error. Please try again.");
+                }
               }}
               className="flex flex-col gap-4"
             >
               <input
-                type="email"
-                placeholder="Your Email"
+                name="name"
+                type="text"
+                placeholder="Your Full Name"
                 required
-                className="border border-gray-300 px-4 py-2 rounded focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-3 border border-pink-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
+              />
+              <input
+                name="email"
+                type="email"
+                placeholder="Your Email Address"
+                required
+                className="w-full px-4 py-3 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+              <input
+                name="whatsapp"
+                type="tel"
+                placeholder="WhatsApp Number (Optional)"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
               />
               <button
                 type="submit"
-                className="bg-pink-600 text-white px-6 py-3 rounded hover:bg-pink-700 transition"
+                className="w-full bg-gradient-to-r from-blue-600 to-pink-600 text-white py-3 rounded-lg font-semibold text-lg shadow-lg hover:opacity-90 transition"
               >
-                Send it to Me
+                Send Instructions
               </button>
             </form>
+
+            <p className="text-xs text-gray-500 mt-4 text-center">
+              Your info is safe & secure. You agree to our{" "}
+              <a href="#" className="underline hover:text-pink-600">
+                Privacy Policy
+              </a>
+              .
+            </p>
           </motion.div>
         </motion.div>
       )}

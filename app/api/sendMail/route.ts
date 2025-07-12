@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   });
 
   try {
-    // Email to you (admin)
+    // 1️⃣ Email to admin
     await transporter.sendMail({
       from: `Clarity Blueprint <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    // Auto-reply to the user
+    // 2️⃣ Auto-response email to user
     await transporter.sendMail({
       from: `Brenda Keya Coaching <${process.env.EMAIL_USER}>`,
       to: email,
@@ -48,9 +48,40 @@ export async function POST(req: NextRequest) {
       `,
     });
 
+    // 3️⃣ WhatsApp message to user (optional WhatsApp field must be filled)
+    if (whatsapp) {
+      const phoneNumber = whatsapp.replace(/^0/, '254'); // Format for Kenya
+console.log('WA_PHONE_ID:', process.env.WA_PHONE_ID);
+console.log('WA_TOKEN begins with:', process.env.WA_TOKEN?.slice(0, 10));
+console.log("Sending template:", process.env.WA_TEMPLATE, "language: en_US");
+      const waRes = await fetch(`https://graph.facebook.com/v19.0/${process.env.WA_PHONE_ID}/messages`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${process.env.WA_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+       body: JSON.stringify({
+  messaging_product: 'whatsapp',
+  to: phoneNumber,
+  type: 'template',
+  template: {
+    name: process.env.WA_TEMPLATE || 'hello_world',
+    language: { code: 'en_US' }
+  }
+}),
+
+      });
+
+      const result = await waRes.json();
+
+      if (!waRes.ok) {
+        console.error('WhatsApp send error:', result);
+      }
+    }
+
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Email sending error:', error);
-    return NextResponse.json({ success: false, message: 'Failed to send emails' }, { status: 500 });
+    console.error('Email or WhatsApp sending error:', error);
+    return NextResponse.json({ success: false, message: 'Failed to send' }, { status: 500 });
   }
 }

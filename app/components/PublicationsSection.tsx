@@ -13,20 +13,20 @@ export default function PublicationsSection() {
       author: "BY BRENDA",
       year: "2025",
       description: "The cement industry accounts for approximately 8% of global CO2 emissions, making it a critical focus for decarbonization under the Paris Climate Agreement’s net-zero target by 2050",
-      link: "#", // Replace with actual book link
+      link: "/notes", // Replace with actual book link
       coverImage: "/images/book-cover.jpg", // Placeholder: Add your image in /public/images
       buttonText: "READ MORE"
     },
     {
       id: 2,
       type: "Podcast",
-      title: "GREEN STRATEGY PROPOSAL",
+      title: "NOTES FROM THE FIELD",
       author: "BY BRENDA",
       year: "2025",
-      description: "Informed by current market dynamics and recent industry events, this proposal details a strategy for a company to achieve leadership in sustainable practices. ",
-      link: "#", // Replace with actual podcast link
+      description: "From coffee husks in Central, to sugarcane stalks in Nyanza, to avocado prunings in Tigoni,  I begin to see a network of carbon wealth lying in our soil, our dust, our waste. ",
+      link: "/notes", // Replace with actual podcast link
       coverImage: "/images/book-cover1.jpg", // Placeholder: Add your image in /public/images
-      buttonText: "LISTEN NOW"
+      buttonText: "READ MORE"
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ export default function PublicationsSection() {
       author: "BY BRENDA",
       year: "2025",
       description: "Our Carbon Forward program aligns corporate sustainability goals with measurable environmental and social outcomes",
-      link: "https://gram.wakaafrica.org/", // Replace with actual article link
+      link: "/notes", // Replace with actual article link
       coverImage: "/images/book-cover2.jpg", // Placeholder: Add your image in /public/images
       buttonText: "READ MORE"
     },

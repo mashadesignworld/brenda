@@ -68,7 +68,7 @@ export default function FooterSection() {
               </p>
               <p className="flex items-center justify-center md:justify-start gap-2">
                 <FontAwesomeIcon icon={faEnvelope} className="text-base" />
-                <span>keyaburt@gmail.com</span>
+                <span>brendakeyacoaching@gmail.com</span>
               </p>
             </div>
           </div>

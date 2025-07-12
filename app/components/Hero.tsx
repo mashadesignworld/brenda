@@ -1,10 +1,14 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
+import EmailModal from "./EmailModal"; // Import the EmailModal component
 
 export default function Hero() {
   return (
+    <>
+     <EmailModal />
     <section className="relative w-full overflow-hidden min-h-screen pt-28 md:pt-32 lg:pt-36">
       {/* Background Video */}
       <div className="absolute inset-0">
@@ -22,18 +26,37 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-purple-800/40 to-pink-600/30 z-10" />
       </div>
 
+      {/* Hero Content */}
       <div className="relative z-20 flex flex-col items-center justify-center max-w-4xl mx-auto px-6 text-center gap-6 pb-20">
-        <h1 className="text-white text-2xl md:text-3xl font-light tracking-wide mb-2">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-white text-2xl md:text-3xl font-light tracking-wide mb-2"
+        >
           | The Aligned Voice |
-        </h1>
+        </motion.h1>
 
-        <h2 className="text-white text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="text-white text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4"
+        >
           <span className="block">Presence.</span>
           <span className="block">Diplomacy.</span>
           <span className="block">Sustainability.</span>
-        </h2>
+        </motion.h2>
 
-        <p className="text-white text-5xl md:text-4xl font-bold mb-6">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.7 }}
+          viewport={{ once: true }}
+          className="text-white text-3xl md:text-4xl font-light mb-6"
+        >
           <Typewriter
             words={["From soul to systems"]}
             loop={0}
@@ -43,15 +66,20 @@ export default function Hero() {
             deleteSpeed={40}
             delaySpeed={1500}
           />
-        </p>
+        </motion.p>
 
-        <a
+        <motion.a
           href="#purpose"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1 }}
+          viewport={{ once: true }}
           className="inline-block bg-white text-black px-8 py-4 text-lg font-semibold uppercase tracking-wider rounded-md shadow-md hover:bg-pink-500 hover:text-white transition-all duration-300"
         >
-          Discover More
-        </a>
+          Start Here
+        </motion.a>
       </div>
     </section>
+    </>
   );
 }

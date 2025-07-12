@@ -43,10 +43,20 @@ export default function EmailModal({ onClose }: { onClose: () => void }) {
           <form
             onSubmit={async (e) => {
               e.preventDefault();
-              const form = e.currentTarget;
-              const name = form.name?.value || "Guest";
-              const email = form.email.value;
-              const whatsapp = form.whatsapp?.value || "";
+              const form = e.currentTarget as HTMLFormElement;
+
+              const nameInput = form.elements.namedItem("name") as HTMLInputElement | null;
+              const emailInput = form.elements.namedItem("email") as HTMLInputElement | null;
+              const whatsappInput = form.elements.namedItem("whatsapp") as HTMLInputElement | null;
+
+              if (!nameInput || !emailInput) {
+                alert("Please enter all required fields.");
+                return;
+              }
+
+              const name = nameInput.value.trim() || "Guest";
+              const email = emailInput.value.trim();
+              const whatsapp = whatsappInput?.value.trim() || "";
 
               try {
                 const res = await fetch("/api/sendMail", {
@@ -58,7 +68,7 @@ export default function EmailModal({ onClose }: { onClose: () => void }) {
                 if (res.ok) {
                   alert("🎉 Email sent! Check your inbox.");
                   form.reset();
-                  onClose(); // Close modal
+                  onClose(); // Close modal after success
                 } else {
                   const err = await res.json();
                   alert("❌ Error: " + err.message);

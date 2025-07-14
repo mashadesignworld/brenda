@@ -19,7 +19,8 @@ export default function Hero() {
           muted
           playsInline
           preload="auto"
-          className="w-full h-full object-cover z-0"
+          className="w-full h-full
+           object-cover z-0"
         >
           Your browser does not support the video tag.
         </video>

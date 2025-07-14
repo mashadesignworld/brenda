@@ -49,7 +49,7 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center space-x-8">
           <li>
             <a
-              href="#aboutme"
+              href="/about"
               className={`nav-link-underline-effect text-lg font-medium ${
                 scrolled ? "text-gray-800" : "text-black"
               }`}

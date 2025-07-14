@@ -49,13 +49,14 @@ export default function PodcastSection() {
           </p>
 
           {/* Quote Block */}
-          <blockquote className="border-l-4 border-blue-500 pl-4 italic text-gray-700 mb-6">
-            "From soul to systems, I help leaders become aligned voices —
-            rooted, resonant, and ready."
-            <footer className="mt-2 text-sm font-semibold text-gray-800">
-              – Brenda N. Keya
-            </footer>
-          </blockquote>
+          <blockquote className="relative border-l-4 border-blue-500 pl-6 italic text-gray-700 mb-6">
+  <span className="absolute -left-3 top-0 text-5xl text-blue-300 leading-none">“</span>
+  From soul to systems, I help leaders become aligned voices — rooted, resonant, and ready.
+  <span className="text-5xl text-blue-300 leading-none">”</span>
+  <footer className="mt-2 text-sm font-semibold text-gray-800">
+    – Brenda N. Keya
+  </footer>
+</blockquote>
 
           {/* CTA Buttons */}
           <div className="flex gap-4 flex-wrap mt-6 justify-center lg:justify-start">

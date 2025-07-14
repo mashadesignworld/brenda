@@ -33,13 +33,14 @@ export default function YoutubeSection() {
           </p>
 
           <p className="text-gray-700 text-base leading-relaxed mb-6">
-            <em>
-              "From soul to systems, I help leaders become aligned voices,
-              rooted, resonant and ready."
-            </em>
-            <br />
-            <strong>– Brenda N. Keya</strong>
-          </p>
+  <em>
+    &quot;From soul to systems, I help leaders become aligned voices,
+    rooted, resonant and ready.&quot;
+  </em>
+  <br />
+  <strong>– Brenda N. Keya</strong>
+</p>
+
 
           {/* Buttons */}
           <div className="flex flex-wrap gap-4 mb-8">

@@ -67,9 +67,9 @@ export default function YoutubeSection() {
           <Image
             src="/phone.png"
             alt="Brenda YouTube on Phone"
-            width={400}
-            height={800}
-            className="object-contain max-w-full h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+            width={480}
+            height={850}
+            className="object-contain max-w-full h-auto drop-shadow-2xl scale-110 md:scale-125 hover:scale-105 transition-transform duration-500"
           />
         </div>
       </div>

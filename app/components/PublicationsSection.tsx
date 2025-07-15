@@ -63,13 +63,14 @@ export default function PublicationsSection() {
             >
               {/* Publication Image/Cover */}
               <div className="relative w-full h-56 md:h-64 lg:h-72"> {/* Fixed height for cover image */}
-                <Image
-                  src={pub.coverImage}
-                  alt={pub.title}
-                  fill // Image fills the parent div
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Responsive image sizes
-                  className="object-cover" // Ensures image covers the area, possibly cropping
-                />
+              <Image
+  src={pub.coverImage}
+  alt={pub.title}
+  fill // Makes the image fill the parent
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+  className="object-cover object-top"
+/>
+
               </div>
 
               {/* Publication Content */}

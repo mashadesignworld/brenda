@@ -49,45 +49,43 @@ export default function PodcastSection() {
           </p>
 
           {/* Quote Block */}
-          <blockquote className="relative border-l-4 border-blue-500 pl-6 italic text-gray-700 mb-6">
-  <span className="absolute -left-3 top-0 text-5xl text-blue-300 leading-none">“</span>
-  From soul to systems, I help leaders become aligned voices — rooted, resonant, and ready.
-  <span className="text-5xl text-blue-300 leading-none">”</span>
+ <blockquote className="relative pl-10 border-l-4 border-blue-500 italic text-gray-700 mb-6 leading-relaxed">
+  <span className="absolute left-2 top-0 text-4xl text-blue-300 leading-none">“</span>
+  <p className="relative z-10 inline">
+    From soul to systems, I help leaders become aligned voices — rooted, resonant, and ready.
+    <span className="text-4xl text-blue-300 align-text-top">”</span>
+  </p>
   <footer className="mt-2 text-sm font-semibold text-gray-800">
-    – Brenda N. Keya
+    – <span className="italic">Brenda N. Keya</span>
   </footer>
 </blockquote>
 
+
+
+
+
           {/* CTA Buttons */}
-          <div className="flex gap-4 flex-wrap mt-6 justify-center lg:justify-start">
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-full hover:bg-red-700 transition"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M10 15l6-3-6-3v6z" />
-                <path d="M24 0v24H0V0h24z" fill="none" />
-              </svg>
-              Watch on YouTube
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M17.82 12.29c-1.42-1.37-2.37-2.52-2.73-3.08-.15-.23-.24-.43-.27-.61-.06-.29.04-.55.3-.78.28-.25.57-.28.9-.09.12.07.3.22.54.47.26.26.67.68 1.2 1.22l1.3 1.3-1.24 1.24zm-.88 5.54c-.34.2-.66.29-.96.25-.28-.03-.48-.13-.62-.3-.17-.2-.34-.49-.51-.87-.22-.46-.58-1.14-1.09-2.04-.55-.97-.97-1.63-1.24-1.98-.29-.39-.45-.7-.48-.94-.02-.24.03-.45.16-.62.14-.18.37-.28.7-.29.21 0 .44.08.67.24.29.21.66.55 1.1 1.02.46.5 1.04 1.19 1.74 2.08.68.86 1.13 1.55 1.34 2.04.21.48.16.86-.09 1.14zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
-              </svg>
-              Listen on Spotify
-            </a>
-          </div>
+          <div className="flex flex-wrap gap-4 mt-6 justify-center lg:justify-start">
+  {/* YouTube Button */}
+  <a
+    href="#"
+    className="inline-flex items-center gap-2 px-6 py-3 text-white bg-red-600 hover:bg-red-700 rounded-full shadow-lg transition-all duration-200"
+  >
+    <svg
+      className="w-5 h-5"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path d="M10 15l6-3-6-3v6z" />
+      <path d="M24 0v24H0V0h24z" fill="none" />
+    </svg>
+    <span className="font-semibold">Watch on YouTube</span>
+  </a>
+
+  {/* Spotify Button */}
+  
+</div>
+
         </div>
 
         {/* Right Column: Video Preview */}

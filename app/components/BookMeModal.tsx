@@ -48,7 +48,7 @@ export default function BookMeModal({ onClose }: { onClose: () => void }) {
           className="bg-gradient-to-br from-pink-100 via-white to-blue-100 p-8 rounded-xl shadow-xl w-full max-w-lg text-gray-800"
           onClick={(e) => e.stopPropagation()}
         >
-          <h2 className="text-3xl font-bold mb-4 text-center text-pink-600">Book Brenda</h2>
+          <h2 className="text-3xl font-bold mb-4 text-center text-pink-600">Book Here</h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <input

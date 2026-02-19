@@ -48,45 +48,47 @@ export default function ClarityBlueprint() {
     preserveAspectRatio="none"
   >
     <defs>
-      {/* Deep Blue Body Gradient */}
+      {/* 1. Define the clipping area: This tells the SVG to HIDE anything inside the wave body */}
+      <clipPath id="aboveWave">
+        <rect x="0" y="0" width="1440" height="320" />
+        <path d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224L1440,0L0,0Z" />
+      </clipPath>
+
       <linearGradient id="waveBody" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#1e3a5f" />
-        <stop offset="100%" stopColor="#0f1a2c" />
+        <stop offset="0%" stopColor="#1a2e4c" />
+        <stop offset="100%" stopColor="#0a1424" />
       </linearGradient>
 
-      {/* Clean Blur Filter (No offset, no shadow) */}
-      <filter id="cleanGlow" x="-20%" y="-20%" width="140%" height="140%">
-        <feGaussianBlur stdDeviation="5" result="blur" />
-        <feMerge>
-          <feMergeNode in="blur" />
-          <feMergeNode in="SourceGraphic" />
-        </feMerge>
+      <filter id="cleanGlow" x="-20%" y="-100%" width="140%" height="200%">
+        <feGaussianBlur stdDeviation="8" result="blur" />
       </filter>
     </defs>
 
-    {/* 1. THE GLOW AURA (Thick & Soft) */}
+    {/* 1. THE WAVE BODY (Placed first so it's the solid base) */}
     <path
-      d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224"
-      fill="none"
-      stroke="#d4a34a"
-      strokeWidth="12"
-      opacity="0.3"
-      filter="url(#cleanGlow)"
+      d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224L1440,320L0,320Z"
+      fill="url(#waveBody)"
     />
 
-    {/* 2. THE SHARP HIGHLIGHT (The bright "string" on top) */}
+    {/* 2. THE GLOW AURA - Clipped so it only bleeds UPWARDS */}
+    <g clipPath="url(#aboveWave)">
+      <path
+        d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224"
+        fill="none"
+        stroke="#d4a34a"
+        strokeWidth="15"
+        opacity="0.4"
+        filter="url(#cleanGlow)"
+      />
+    </g>
+
+    {/* 3. THE SHARP HIGHLIGHT (The crisp gold string on the very top edge) */}
     <path
       d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224"
       fill="none"
       stroke="#f6e0b5"
       strokeWidth="1.5"
-      opacity="0.9"
-    />
-
-    {/* 3. THE WAVE BODY */}
-    <path
-      d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224L1440,320L0,320Z"
-      fill="url(#waveBody)"
+      opacity="0.8"
     />
   </svg>
 </div>

@@ -24,7 +24,7 @@ export default function Hero() {
         >
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-purple-800/40 to-pink-600/30 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050a12] via-[#050a12]/80 to-transparent" />
       </div>
 
       {/* Modal */}

@@ -4,6 +4,7 @@ import { EB_Garamond, Great_Vibes, Dancing_Script } from 'next/font/google'; // 
 import FooterSection from './components/FooterSection';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import Navbar from './components/Navbar'; // Ensure Navbar is imported correctly
+import { Playfair_Display, Inter } from "next/font/google";
 
 // Configure EB Garamond
 const ebGaramond = EB_Garamond({
@@ -46,3 +47,12 @@ export default function RootLayout({
     </html>
   );
 }
+
+export const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
+
+export const inter = Inter({
+  subsets: ["latin"],
+});

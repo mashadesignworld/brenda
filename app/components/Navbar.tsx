@@ -47,6 +47,12 @@ export default function Navbar() {
           {/* Desktop Links */}
           <ul className="hidden md:flex items-center space-x-8">
             <li><a href="#aboutme" className={`nav-link-underline-effect text-lg font-medium ${scrolled ? "text-gray-800" : "text-black"}`}>About</a></li>
+           <Link 
+    href="/clarity-blueprint" 
+    className={`nav-link-underline-effect text-lg font-medium ${scrolled ? "text-gray-800" : "text-black"}`}
+  >
+    Clarity
+  </Link>
             <li><a href="#podcast" className={`nav-link-underline-effect text-lg font-medium ${scrolled ? "text-gray-800" : "text-black"}`}>Podcast</a></li>
             <li><a href="#shows" className={`nav-link-underline-effect text-lg font-medium ${scrolled ? "text-gray-800" : "text-black"}`}>Shows</a></li>
             <li><a href="#publications" className={`nav-link-underline-effect text-lg font-medium ${scrolled ? "text-gray-800" : "text-black"}`}>Publications</a></li>

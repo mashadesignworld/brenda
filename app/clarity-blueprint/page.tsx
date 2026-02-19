@@ -118,7 +118,7 @@ export default function ClarityBlueprint() {
     {/* Image */}
     <div>
       <Image
-        src="/4.jpg"
+        src="/brendapp2.jpeg"
         alt="Brenda N. Keya"
         className="rounded-2xl shadow-2xl"
         width={600}

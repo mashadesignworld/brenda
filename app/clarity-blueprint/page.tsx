@@ -19,12 +19,14 @@ export default function ClarityBlueprint() {
         <div className="relative z-10 max-w-3xl">
           <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6">
             THE CLARITY BLUEPRINT
+            <hr className="border-t-2 border-[#d4a34a] my-4 mx-auto w-1/3" />
           </h1>
 
           <p className="text-xl md:text-2xl italic mb-4">
             Lead with Clarity. Thrive with Grace.
+            
           </p>
-
+<hr className="border-t-2 border-[#d4a34a] my-4 mx-auto w-1/3" />
           <p className="mb-8 text-lg opacity-90">
             A 5-Step Framework to Align Your Voice, Strengthen Your Presence,
             and Command Your Space.

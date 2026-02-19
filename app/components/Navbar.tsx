@@ -51,7 +51,7 @@ export default function Navbar() {
     href="/clarity-blueprint" 
     className={`nav-link-underline-effect text-lg font-medium ${scrolled ? "text-gray-800" : "text-black"}`}
   >
-    Clarity
+    Clarity-BluePrint
   </Link>
             <li><a href="#podcast" className={`nav-link-underline-effect text-lg font-medium ${scrolled ? "text-gray-800" : "text-black"}`}>Podcast</a></li>
             <li><a href="#shows" className={`nav-link-underline-effect text-lg font-medium ${scrolled ? "text-gray-800" : "text-black"}`}>Shows</a></li>

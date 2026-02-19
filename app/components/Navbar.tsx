@@ -98,6 +98,7 @@ export default function Navbar() {
               >
                 {text}
               </a>
+              
             ))}
             <button
               onClick={() => {

@@ -5,7 +5,7 @@ export default function ClarityBlueprint() {
   
     <div className="bg-[#0f1a2c] text-white">
 
-      {/* HERO */}
+      {/* HERO SECTION */}
       <section
         className="relative h-screen flex items-center justify-center text-center px-6"
         style={{
@@ -21,78 +21,38 @@ export default function ClarityBlueprint() {
             THE CLARITY BLUEPRINT
             <hr className="border-t-2 border-[#d4a34a] my-4 mx-auto w-1/3" />
           </h1>
-
-          <p className="text-xl md:text-2xl italic mb-4">
-            Lead with Clarity. Thrive with Grace.
-            
-          </p>
-<hr className="border-t-2 border-[#d4a34a] my-4 mx-auto w-1/3" />
-          <p className="mb-8 text-lg opacity-90">
-            A 5-Step Framework to Align Your Voice, Strengthen Your Presence,
-            and Command Your Space.
-          </p>
-
-          <button className="bg-[#d4a34a] text-black px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition">
+          <p className="text-xl md:text-2xl italic mb-4">Lead with Clarity. Thrive with Grace.</p>
+          <hr className="border-t-2 border-[#d4a34a] my-4 mx-auto w-1/3" />
+          <button className="bg-[#d4a34a] text-black px-8 py-4 rounded-lg font-semibold hover:scale-105 transition-all">
             Download the Blueprint
           </button>
-
-          <p className="mt-4 underline cursor-pointer">
-            Or Book a Clarity Session
-          </p>
         </div>
-        {/* ULTRA PREMIUM WAVE DIVIDER */}
-<div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-  <svg
-    viewBox="0 0 1440 320"
-    className="relative block w-full h-[170px]"
-    preserveAspectRatio="none"
-  >
-    <defs>
-      {/* 1. Define the clipping area: This tells the SVG to HIDE anything inside the wave body */}
-      <clipPath id="aboveWave">
-        <rect x="0" y="0" width="1440" height="320" />
-        <path d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224L1440,0L0,0Z" />
-      </clipPath>
 
-      <linearGradient id="waveBody" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#1a2e4c" />
-        <stop offset="100%" stopColor="#0a1424" />
-      </linearGradient>
-
-      <filter id="cleanGlow" x="-20%" y="-100%" width="140%" height="200%">
-        <feGaussianBlur stdDeviation="8" result="blur" />
-      </filter>
-    </defs>
-
-    {/* 1. THE WAVE BODY (Placed first so it's the solid base) */}
-    <path
-      d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224L1440,320L0,320Z"
-      fill="url(#waveBody)"
-    />
-
-    {/* 2. THE GLOW AURA - Clipped so it only bleeds UPWARDS */}
-    <g clipPath="url(#aboveWave)">
-      <path
-        d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224"
-        fill="none"
-        stroke="#d4a34a"
-        strokeWidth="15"
-        opacity="0.4"
-        filter="url(#cleanGlow)"
-      />
-    </g>
-
-    {/* 3. THE SHARP HIGHLIGHT (The crisp gold string on the very top edge) */}
-    <path
-      d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224"
-      fill="none"
-      stroke="#f6e0b5"
-      strokeWidth="1.5"
-      opacity="0.8"
-    />
-  </svg>
-</div>
-         </section>
+        {/* GOLD WAVE DIVIDER (Fixed Bleed) */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
+          <svg viewBox="0 0 1440 320" className="relative block w-full h-[120px]" preserveAspectRatio="none">
+            <defs>
+              <clipPath id="clipAbove">
+                <rect x="0" y="0" width="1440" height="320" />
+                <path d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224L1440,0L0,0Z" />
+              </clipPath>
+              <filter id="goldGlow" x="-20%" y="-100%" width="140%" height="200%">
+                <feGaussianBlur stdDeviation="6" result="blur" />
+              </filter>
+            </defs>
+            {/* The Navy Body of the Wave - Matches the section below */}
+            <path d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224L1440,320L0,320Z" fill="#16243a" />
+            
+            {/* The Gold Glow - Clipped so it only goes UP */}
+            <g clipPath="url(#clipAbove)">
+              <path d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224" fill="none" stroke="#d4a34a" strokeWidth="10" opacity="0.4" filter="url(#goldGlow)" />
+            </g>
+            
+            {/* The Sharp Gold String */}
+            <path d="M0,160C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1440,224" fill="none" stroke="#f6e0b5" strokeWidth="1.5" opacity="0.9" />
+          </svg>
+        </div>
+      </section>
                {/* STATEMENT */}
       <section className="py-20 px-6 text-center bg-[#16243a]">
         <h2 className="text-4xl md:text-5xl font-serif italic leading-relaxed">

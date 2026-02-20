@@ -1,7 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import { Anchor, Mic2, Zap, Heart, Calendar } from "lucide-react";
+import EmailModal from "../components/EmailModal";
 
+
+
+import React, { useState } from "react";
 export default function ClarityBlueprint() {
+ const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="bg-[#0f1a2c] text-white">
 
@@ -23,10 +31,15 @@ export default function ClarityBlueprint() {
           </h1>
           <p className="text-xl md:text-2xl italic mb-4">Lead with Clarity. Thrive with Grace.</p>
           <hr className="border-t-2 border-[#d4a34a] my-4 mx-auto w-1/3" />
-          <button className="bg-[#d4a34a] text-black px-8 py-4 rounded-lg font-semibold hover:scale-105 transition-all shadow-lg shadow-[#d4a34a]/20">
+          <button   onClick={() => setShowModal(true)}
+           className="bg-[#d4a34a] text-black px-8 py-4 rounded-lg font-semibold hover:scale-105 transition-all shadow-lg shadow-[#d4a34a]/20">
             Download the Blueprint
           </button>
         </div>
+   {/* Modal */}
+      {showModal && <EmailModal onClose={() => setShowModal(false)} />}
+
+         
 
         {/* GOLD WAVE DIVIDER */}
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
@@ -75,7 +88,7 @@ export default function ClarityBlueprint() {
           ))}
         </div>
 
-        <button className="mt-12 bg-[#d4a34a] text-black px-8 py-4 rounded-lg font-semibold hover:bg-[#f6e0b5] transition-colors">
+        <button    onClick={() => setShowModal(true)} className="mt-12 bg-[#d4a34a] text-black px-8 py-4 rounded-lg font-semibold hover:bg-[#f6e0b5] transition-colors">
           Get Instant Access
         </button>
       </section>
@@ -110,7 +123,9 @@ export default function ClarityBlueprint() {
           ))}
         </div>
 
-        <button className="mt-16 bg-[#d4a34a] text-[#0f1a2c] px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-[#f6e0b5] hover:scale-105 transition-all shadow-xl">
+        <button 
+        onClick={() => setShowModal(true)}
+        className="mt-16 bg-[#d4a34a] text-[#0f1a2c] px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-[#f6e0b5] hover:scale-105 transition-all shadow-xl">
           Unlock the Full Blueprint
         </button>
       </section>
@@ -152,7 +167,7 @@ export default function ClarityBlueprint() {
               <p className="mt-2 text-[#d4a34a]">And true power begins with alignment.</p>
             </div>
 
-            <button className="mt-10 bg-[#d4a34a] text-black px-8 py-4 rounded-lg font-semibold hover:scale-105 transition-all shadow-lg">
+            <button  onClick={() => setShowModal(true)} className="mt-10 bg-[#d4a34a] text-black px-8 py-4 rounded-lg font-semibold hover:scale-105 transition-all shadow-lg">
               Download Your Blueprint Now
             </button>
           </div>

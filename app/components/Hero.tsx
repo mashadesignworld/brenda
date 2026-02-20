@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-import EmailModal from "./EmailModal";
+import EmailModal from "../components/EmailModal";
 
 export default function Hero() {
   const [showModal, setShowModal] = useState(false);

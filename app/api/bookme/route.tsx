@@ -42,7 +42,7 @@ export async function POST(req: Request) {
 
             <div style="width: 100%; text-align: center;">
                <img src="https://brenda-sigma.vercel.app/brendapp1.jpeg" alt="Brenda Keya" 
-               style="width: 250px; height: auto; border-radius: 50%; border: 4px solid #fbcfe8; display: inline-block;" />
+               style="width: 350px; height: auto;  border: 4px solid #fbcfe8; display: inline-block;" />
             </div>
 
             <div style="padding: 40px; color: #333333; line-height: 1.6;">

@@ -41,7 +41,8 @@ export async function POST(req: Request) {
             </div>
 
             <div style="width: 100%; text-align: center;">
-               <img src="https://brenda-sigma.vercel.app/brendapp1.jpeg" alt="Brenda Keya" style="width: 100%; display: block; border-bottom: 4px solid #db2777;" />
+               <img src="https://brenda-sigma.vercel.app/brendapp1.jpeg" alt="Brenda Keya" 
+               style="width: 250px; height: auto; border-radius: 50%; border: 4px solid #fbcfe8; display: inline-block;" />
             </div>
 
             <div style="padding: 40px; color: #333333; line-height: 1.6;">
@@ -54,7 +55,8 @@ export async function POST(req: Request) {
               <p style="font-size: 16px; margin-bottom: 30px;">In this season, I am dedicated to helping you unlock your true potential and step into the fullness of your calling.</p>
               
               <div style="text-align: center; margin: 30px 0;">
-                <a href="https://brenda-sigma.vercel.app" style="background-color: #006677; color: #ffffff; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; display: inline-block;">VISIT MY WEBSITE</a>
+                <a href="https://brenda-sigma.vercel.app" 
+                style="background-color: #006677; color: #ffffff; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; display: inline-block;">VISIT MY WEBSITE</a>
               </div>
 
               <div style="background-color: #fff5f7; border-left: 4px solid #db2777; padding: 20px; margin-top: 40px;">

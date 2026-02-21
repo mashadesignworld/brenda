@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import toast from 'react-hot-toast';
 
 export default function BookMeModal({ onClose }: { onClose: () => void }) {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -13,21 +14,41 @@ export default function BookMeModal({ onClose }: { onClose: () => void }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    e.stopPropagation(); // Prevents the click from bubbling to the background
+    
     setIsSending(true);
+    
+    // If you don't see this alert, your browser is running an OLD version of this file.
+    console.log("Submit logic started"); 
 
-    const res = await fetch("/api/bookme", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+    const tid = toast.loading("Sending your request...");
 
-    setIsSending(false);
+    try {
+      const res = await fetch("/api/bookme", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    if (res.ok) {
-      alert("Message sent successfully!");
-      onClose();
-    } else {
-      alert("Failed to send. Please try again.");
+      if (res.ok) {
+        toast.success("Message sent to Brenda! ✨", {
+          id: tid, // Using ID here is safer
+          duration: 5000,
+          icon: '🌸',
+        });
+
+        // Delay closing so the success toast is visible
+        setTimeout(() => {
+          onClose();
+          setIsSending(false);
+        }, 2000);
+      } else {
+        throw new Error("Failed to send");
+      }
+    } catch (error) {
+      console.error(error);
+      setIsSending(false);
+      toast.error("Could not send message", { id: tid });
     }
   };
 
@@ -37,8 +58,11 @@ export default function BookMeModal({ onClose }: { onClose: () => void }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur"
-        onClick={onClose}
+        className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 backdrop-blur"
+        // Only close if the dark background is clicked, not the modal content
+        onClick={(e) => {
+          if (e.target === e.currentTarget) onClose();
+        }}
       >
         <motion.div
           initial={{ scale: 0.95, y: 30 }}
@@ -88,6 +112,7 @@ export default function BookMeModal({ onClose }: { onClose: () => void }) {
           </form>
 
           <button
+            type="button" // VERY IMPORTANT: Prevents this button from submitting the form
             onClick={onClose}
             className="mt-4 text-sm text-gray-500 hover:text-gray-700 text-center w-full"
           >

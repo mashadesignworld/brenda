@@ -8,7 +8,7 @@ export default function NotesPage() {
       <section className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden flex items-center justify-center text-white text-center">
         {/* Background Image for the hero */}
         <Image
-          src="/images/notes-hero.jpg" // Placeholder: Image of African landscape/industry/climate
+          src="/images/cement-factory.jpg" // Placeholder: Image of African landscape/industry/climate
           alt="Notes from the Field"
           fill
           sizes="100vw"

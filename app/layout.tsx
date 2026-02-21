@@ -5,6 +5,7 @@ import FooterSection from './components/FooterSection';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import Navbar from './components/Navbar'; // Ensure Navbar is imported correctly
 import { Playfair_Display, Inter } from "next/font/google";
+import { Toaster } from 'react-hot-toast';
 
 // Configure EB Garamond
 const ebGaramond = EB_Garamond({
@@ -41,6 +42,18 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <Toaster 
+          position="top-center" 
+          containerStyle={{
+            zIndex: 99999, // This ensures it sits on top of your z-50 modal
+          }}
+          toastOptions={{
+            // Extra safety: style individual toasts too
+            style: {
+              zIndex: 99999,
+            },
+          }}
+        />
         <FooterSection />
         {/* Ensure the FooterSection is included at the bottom of the layout */}
       </body>

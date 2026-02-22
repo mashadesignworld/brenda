@@ -3,8 +3,11 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight, Quote, CheckCircle2, Globe, Leaf } from 'lucide-react';
+import BookMeModal from '../components/BookMeModal';
+import { useState } from 'react';
 
 export default function NotesPage() {
+      const [showBookModal, setShowBookModal] = useState(false);
   return (
     <div className="min-h-screen bg-[#050a12] text-gray-200 selection:bg-pink-500/30">
       
@@ -167,7 +170,9 @@ export default function NotesPage() {
   <p className="text-gray-400 mb-10 max-w-md mx-auto">
     If you&apos;re a developer, investor, or visionary looking to build in Africa&apos;s green space—let&apos;s talk.
   </p>
-  <button className="group bg-white text-black px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-pink-500 hover:text-white transition-all duration-300 flex items-center gap-2 mx-auto">
+  <button onClick={()=>{
+    setShowBookModal(true)
+  }} className="group bg-white text-black px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-pink-500 hover:text-white transition-all duration-300 flex items-center gap-2 mx-auto">
     Start the Conversation
     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
   </button>
@@ -179,6 +184,8 @@ export default function NotesPage() {
       <footer className="pb-24 text-center">
         <p className="text-gray-600 text-[10px] uppercase tracking-[0.5em]">Next Dispatch: coming soon</p>
       </footer>
+      {/* Modal */}
+            {showBookModal && <BookMeModal onClose={() => setShowBookModal(false)} />}
     </div>
   );
 }

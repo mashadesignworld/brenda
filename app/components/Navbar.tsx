@@ -3,118 +3,140 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import BookMeModal from "./BookMeModal"; // ⬅️ Import the modal component
+import { motion, AnimatePresence } from "framer-motion";
+import BookMeModal from "./BookMeModal";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showBookModal, setShowBookModal] = useState(false); // ⬅️ Modal state
+  const [showBookModal, setShowBookModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const navLinks = [
+    { name: "About", href: "#aboutme" },
+    { name: "Clarity-Blueprint", href: "/clarity-blueprint" },
+    { name: "Podcast", href: "#podcast" },
+    { name: "Shows", href: "#shows" },
+    { name: "Publications", href: "#publications" },
+  ];
 
   return (
     <>
-      {/* Navbar */}
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/100 backdrop-blur-md shadow-lg"
-            : "bg-white/100"
+        className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
+          scrolled 
+            ? "py-3 bg-[#050a12]/40 backdrop-blur-xl border-b border-white/10" 
+            : "py-6 bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          
+          {/* Logo with entrance animation */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex-shrink-0"
+          >
+            <Link href="/" className="relative group">
               <Image
                 src="/logo.png"
                 alt="Brenda Keya"
-                width={140}
-                height={100}
+                width={130}
+                height={80}
                 priority
+                className="brightness-0 invert transition-all duration-300 group-hover:scale-105"
               />
             </Link>
-          </div>
+          </motion.div>
 
           {/* Desktop Links */}
-          <ul className="hidden md:flex items-center space-x-8">
-            <li><a href="#aboutme" className={`nav-link-underline-effect text-lg font-medium ${scrolled ? "text-gray-800" : "text-black"}`}>About</a></li>
-           <Link 
-    href="/clarity-blueprint" 
-    className={`nav-link-underline-effect text-lg font-medium ${scrolled ? "text-gray-800" : "text-black"}`}
-  >
-    Clarity-BluePrint
-  </Link>
-            <li><a href="#podcast" className={`nav-link-underline-effect text-lg font-medium ${scrolled ? "text-gray-800" : "text-black"}`}>Podcast</a></li>
-            <li><a href="#shows" className={`nav-link-underline-effect text-lg font-medium ${scrolled ? "text-gray-800" : "text-black"}`}>Shows</a></li>
-            <li><a href="#publications" className={`nav-link-underline-effect text-lg font-medium ${scrolled ? "text-gray-800" : "text-black"}`}>Publications</a></li>
-            <li>
-              <button
-                onClick={() => setShowBookModal(true)}
-                className={`px-5 py-2 border-2 rounded-full text-lg font-semibold transition ${
-                  scrolled
-                    ? "border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white"
-                    : "border-white text-black hover:bg-white hover:text-gray-800"
-                }`}
-              >
-                Book Me
-              </button>
-            </li>
-          </ul>
+          <div className="hidden md:flex items-center gap-10">
+            <ul className="flex items-center gap-8">
+              {navLinks.map((link, i) => (
+                <motion.li 
+                  key={link.name}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <Link 
+                    href={link.href}
+                    className="relative text-[13px] font-bold uppercase tracking-[0.2em] text-white/70 hover:text-white transition-colors duration-300 group"
+                  >
+                    {link.name}
+                    {/* Animated Underline */}
+                    <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-pink-500 transition-all duration-300 group-hover:w-full" />
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
 
-          {/* Mobile Hamburger */}
+            {/* Book Me Button - Matching the Premium Theme */}
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowBookModal(true)}
+              className="px-6 py-2.5 bg-white text-[#050a12] text-[12px] font-black uppercase tracking-widest rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 shadow-xl shadow-white/5"
+            >
+              Book Me
+            </motion.button>
+          </div>
+
+          {/* Mobile Toggle */}
           <div className="md:hidden">
             <button
-              className={`focus:outline-none text-2xl ${scrolled ? "text-gray-800" : "text-white"}`}
-              onClick={toggleMenu}
-              aria-label="Toggle Menu"
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="w-10 h-10 flex flex-col items-center justify-center gap-1.5 focus:outline-none"
             >
-              {menuOpen ? "✖" : "☰"}
+              <span className={`h-0.5 w-6 bg-white transition-all ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+              <span className={`h-0.5 w-6 bg-white transition-all ${menuOpen ? "opacity-0" : ""}`} />
+              <span className={`h-0.5 w-6 bg-white transition-all ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
             </button>
           </div>
         </div>
 
-        {/* Mobile Dropdown Links */}
-        {menuOpen && (
-          <div
-            className={`md:hidden px-6 pb-4 space-y-4 shadow-inner transition-colors duration-300 ${
-              scrolled ? "bg-white/90" : "bg-gray-800/90"
-            }`}
-          >
-            {["About", "Start Here", "Podcast", "Live Event", "Courses & Coaching"].map((text) => (
-              <a
-                key={text}
-                href={`#${text.toLowerCase().replace(/ /g, "-")}`}
-                onClick={toggleMenu}
-                className={`mobile-nav-link-hover-color block text-lg py-2 transition ${scrolled ? "text-gray-800" : "text-white"}`}
-              >
-                {text}
-              </a>
-              
-            ))}
-            <button
-              onClick={() => {
-                toggleMenu();
-                setShowBookModal(true);
-              }}
-              className={`block w-full px-5 py-2 border-2 rounded-full text-lg font-semibold text-center transition ${
-                scrolled
-                  ? "border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white"
-                  : "border-white text-white hover:bg-white hover:text-gray-800"
-              }`}
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-[#050a12] border-b border-white/10 overflow-hidden"
             >
-              Book Me
-            </button>
-          </div>
-        )}
+              <div className="flex flex-col p-8 gap-6">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-2xl font-bold text-white tracking-tighter"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+                <button
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setShowBookModal(true);
+                  }}
+                  className="w-full py-4 bg-pink-600 text-white font-bold uppercase tracking-widest rounded-xl"
+                >
+                  Book Me
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       {/* Modal component */}

@@ -1,163 +1,152 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import {  Mic2, Leaf, Sparkles, CheckCircle2 } from "lucide-react";
 
 export default function AboutPage() {
+  const fadeIn = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.8 }
+  };
+
   return (
-    <div className="bg-[#FFF8F9] text-[#2B2D42] px-6 py-20 md:py-32 font-sans space-y-24">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 text-[#C08497]">
-          Brenda Keya | The Aligned Voice
-        </h1>
-        <p className="text-xl text-center text-[#7D8BA0] max-w-2xl mx-auto">
-          Presence. Diplomacy. Sustainability. From soul to systems.
-        </p>
+    <div className="min-h-screen bg-[#050a12] text-gray-300 selection:bg-pink-500/30 font-sans pb-24">
+      
+      {/* Header Section */}
+      <section className="relative pt-32 pb-20 px-6 text-center">
+        <motion.div {...fadeIn} className="max-w-4xl mx-auto">
+          <span className="inline-block px-4 py-1 rounded-full border border-pink-500/30 bg-pink-500/10 text-pink-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
+            The Architect of Alignment
+          </span>
+          <h1 className="text-5xl md:text-7xl font-serif font-light text-white leading-tight tracking-tighter mb-8">
+            Brenda N. Keya <br />
+            <span className="italic text-pink-500">The Aligned Voice</span>
+          </h1>
+          <p className="text-xl md:text-2xl font-light text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            Presence. Diplomacy. Sustainability. <br />
+            <span className="text-white/60">Bridging the gap between soul and systems.</span>
+          </p>
+        </motion.div>
+      </section>
+
+      {/* Hero Image Section - Wide Layout */}
+<section className="px-6 mb-32">
+  <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 items-center">
+    
+    {/* The Image Container - Now using a fixed aspect ratio instead of 'fill' */}
+    <motion.div 
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1 }}
+      className="md:col-span-7 relative aspect-[4/5] md:aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/10"
+    >
+      <Image
+        src="/brendapp2.jpeg"
+        alt="Brenda Keya"
+        fill
+        className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-1000"
+        priority
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#050a12]/40 to-transparent" />
+    </motion.div>
+
+    {/* Elegant Editorial Text for the side */}
+    <motion.div 
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1, delay: 0.2 }}
+      className="md:col-span-5 space-y-4"
+    >
+      <p className="text-pink-500 font-bold uppercase tracking-[0.3em] text-[10px]">Est. 2024</p>
+      <h3 className="text-3xl font-serif italic text-white leading-tight">
+        Guided by the pursuit of <br /> radical clarity.
+      </h3>
+      <p className="text-sm text-gray-500 max-w-xs leading-relaxed">
+        Capturing a moment of reflection before the Africa Young Diplomats Forum.
+      </p>
+    </motion.div>
+
+  </div>
+</section>
+
+      {/* Core Narrative */}
+      <section className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start mb-40">
+        <motion.div {...fadeIn} className="space-y-8">
+          <h2 className="text-3xl font-serif italic text-white leading-snug">
+            Bringing together two worlds often seen as separate — inner mastery and global transformation.
+          </h2>
+          <div className="w-20 h-px bg-pink-500" />
+        </motion.div>
+        
+        <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="space-y-6 text-lg font-light leading-relaxed text-gray-400">
+          <p>
+            <strong className="text-white">Brenda N. Keya</strong> is a Presence & Expression Coach, Sustainability Branding Consultant, and Diplomat shaping the intersection of personal clarity and planetary impact.
+          </p>
+          <p>
+            With a background in psychology, diplomacy, and sustainability innovation, she helps leaders speak from soul, lead with clarity, and design systems that serve both people and the planet.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* Pillars Section */}
+      <div className="bg-white/[0.02] border-y border-white/5 py-32 mb-40">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-24">
+            
+            {/* Pillar 1: Presence */}
+            <motion.div {...fadeIn} className="space-y-8">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-500">
+                  <Mic2 size={24} />
+                </div>
+                <h3 className="text-2xl font-serif text-white uppercase tracking-widest text-sm">Presence & Expression</h3>
+              </div>
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10">
+                <Image src="/2.jpg" alt="Coaching" fill className="object-cover grayscale" />
+              </div>
+              <p className="text-gray-400 font-light leading-relaxed italic">
+                &quot;Voice isn’t something to find but something to remember. Presence is not volume, but alignment.&quot;
+              </p>
+            </motion.div>
+
+            {/* Pillar 2: Diplomacy */}
+            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="space-y-8 md:mt-24">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+                  <Leaf size={24} />
+                </div>
+                <h3 className="text-2xl font-serif text-white uppercase tracking-widest text-sm">Diplomacy & Sustainability</h3>
+              </div>
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10">
+                <Image src="/3.jpg" alt="Diplomacy" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+              </div>
+              <ul className="grid grid-cols-1 gap-4">
+                {["Carbon credit markets", "Green value chains", "Climate finance advocacy", "Policy harmonization"].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-sm text-gray-300">
+                    <CheckCircle2 size={16} className="text-pink-500" /> {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+          </div>
+        </div>
       </div>
 
-      {/* Section 1 */}
-      <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        {/* Image Left */}
-        <div className="w-full h-[250px] md:h-[300px] overflow-hidden rounded-lg shadow-md">
-          <Image
-            src="/1.jpg"
-            alt="Brenda Speaking"
-            className="w-full h-full object-cover object-top"
-            width={600}
-            height={400}
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL="/1.jpg"
-          />
-        </div>
-
-        {/* Text Right */}
-        <div className="space-y-6 text-lg leading-relaxed">
-          <p>
-            <strong>Brenda N. Keya</strong> is a Presence & Expression Coach, Sustainability Branding Consultant,
-            and Diplomat shaping the intersection of personal clarity and planetary impact. She is the Founder of
-            <em> The Aligned Voice</em> and Country Director for the Africa Young Diplomats Forum – Kenya.
-          </p>
-          <p>
-            Brenda brings together two worlds often seen as separate — inner mastery and global transformation. With a
-            background in psychology, diplomacy, and sustainability innovation, she helps leaders speak from soul, lead
-            with clarity, and design systems that serve people and planet.
-          </p>
-        </div>
+      {/* Final Quote */}
+      <section className="max-w-4xl mx-auto px-6 text-center py-20">
+        <motion.div {...fadeIn}>
+          <Sparkles className="w-8 h-8 text-pink-500 mx-auto mb-8 opacity-50" />
+          <blockquote className="text-3xl md:text-5xl font-serif italic text-white leading-tight mb-8">
+            &quot;From soul to systems, I help leaders become aligned voices — rooted, resonant, and ready.&quot;
+          </blockquote>
+          <p className="text-pink-500 font-bold uppercase tracking-[0.4em] text-xs">~ Brenda N. Keya</p>
+        </motion.div>
       </section>
 
-      {/* Section 2 */}
-      <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        {/* Text Left */}
-        <div className="order-2 md:order-1 space-y-6 text-lg leading-relaxed">
-          <h2 className="text-2xl font-semibold text-[#C08497]">🎤 Presence & Expression Work</h2>
-          <p>
-            As a Voice Coach and Clarity Mentor, Brenda helps women reclaim their rhythm, values, and voice. Through her
-            platform <strong>Command Your Space</strong> and guide <strong>The Clarity Blueprint</strong>, she offers
-            powerful tools for self-mastery, intentional communication, and embodied leadership.
-          </p>
-          <p>
-            She believes voice isn’t something to find but something to remember. And presence is not volume, but
-            alignment.
-          </p>
-        </div>
-
-        {/* Image Right */}
-        <div className="order-1 md:order-2 w-full h-[250px] md:h-[300px] overflow-hidden rounded-lg shadow-md">
-          <Image
-            src="/2.jpg"
-            alt="Coaching Work"
-            className="w-full h-full object-cover object-top"
-            width={600}
-            height={400}
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL="/2.jpg"
-          />
-        </div>
-      </section>
-
-      {/* Section 3 */}
-      <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        {/* Image Left */}
-        <div className="w-full h-[250px] md:h-[300px] overflow-hidden rounded-lg shadow-md">
-          <Image
-            src="/3.jpg"
-            alt="Diplomacy Work"
-            className="w-full h-full object-cover object-top"
-            width={600}
-            height={400}
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL="/3.jpg"
-          />
-        </div>
-
-        {/* Text Right */}
-        <div className="space-y-6 text-lg leading-relaxed">
-          <h2 className="text-2xl font-semibold text-[#94B0DA]">🌍 Diplomacy & Sustainability Work</h2>
-          <p>
-            Brenda is an Executive Masters graduate in Multilateral Diplomacy & International Organizations (ASDIR Abuja),
-            with a career spanning:
-          </p>
-          <ul className="list-disc pl-6 space-y-2">
-            <li>Carbon credit markets (Waka Gram, Carbon Forward Program)</li>
-            <li>Green value chains and low-carbon cement (Green Build Think-Tank)</li>
-            <li>Climate finance advocacy (Article 6, AfCFTA, biodiversity networks)</li>
-            <li>Policy harmonization across the Pan-African Green Industrialization agenda</li>
-          </ul>
-          <p>
-            She collaborates with UNEP, UNFCCC, and the UN Science-Policy-Business Forum, contributing to ESG alignment,
-            climate diplomacy, and nature-based policies.
-          </p>
-        </div>
-      </section>
-
-      {/* Section 4 */}
-      <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        {/* Text Left */}
-        <div className="order-2 md:order-1 space-y-6 text-lg leading-relaxed">
-          <h2 className="text-2xl font-semibold text-[#C08497]">📣 Platforms & Impact</h2>
-          <ul className="list-disc pl-6 space-y-2">
-            <li>
-              <strong>YouTube Channel:</strong> <em>Presence & Power Africa</em> – Clarity tools, voice coaching, and
-              sustainability insights
-            </li>
-            <li>
-              <strong>The Aligned Voice:</strong> Her personal brand uniting consulting and soul-led coaching
-            </li>
-            <li>
-              <strong>Notes from the Field:</strong> Writings on sustainability in the built environment
-            </li>
-            <li>
-              <strong>Command Your Space:</strong> Coaching platform for voice and graceful power
-            </li>
-          </ul>
-          <p className="italic text-[#7D8BA0]">
-            Brenda is a believer in quiet power, sacred clarity, and systems that center both the inner compass and the
-            outer mandate.
-          </p>
-        </div>
-
-        {/* Image Right */}
-        <div className="order-1 md:order-2 w-full h-[250px] md:h-[300px] overflow-hidden rounded-lg shadow-md">
-          <Image
-            src="/4.jpg"
-            alt="Brenda Coaching"
-            className="w-full h-full object-cover object-top"
-            width={600}
-            height={400}
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL="/4.jpg"
-          />
-        </div>
-      </section>
-
-      {/* Quote Section */}
-      <section className="max-w-4xl mx-auto text-center mt-20">
-        <blockquote className="text-2xl font-medium text-[#2B2D42] border-l-4 border-[#94B0DA] pl-4 italic">
-          “From soul to systems, I help leaders become aligned voices — rooted, resonant, and ready.”
-        </blockquote>
-        <p className="mt-4 text-[#7D8BA0]">~ Brenda N. Keya</p>
-      </section>
     </div>
   );
 }

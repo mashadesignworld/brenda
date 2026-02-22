@@ -71,7 +71,7 @@ export default function AboutSection() {
           className="relative"
         >
           <p className="text-xl md:text-2xl leading-relaxed text-gray-300 font-light italic">
-            "Voice isn’t something to find — it's something to <span className="text-white font-medium">remember</span>."
+            &quot;Voice isn&apos;t something to find — it&apos;s something to <span className="text-white font-medium">remember</span>.&quot;
           </p>
           <div className="mt-8 space-y-6 text-gray-400 leading-relaxed text-lg">
             <p>

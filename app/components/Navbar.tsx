@@ -19,12 +19,12 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // FIXED LINKS: Added "/" before the "#" so they work from any page
   const navLinks = [
-    { name: "About", href: "#aboutme" },
-    { name: "Clarity-Blueprint", href: "/clarity-blueprint" },
-    { name: "Podcast", href: "#podcast" },
-    { name: "Shows", href: "#shows" },
-    { name: "Publications", href: "#publications" },
+    { name: "About", href: "/#aboutme" },
+    { name: "Blueprint", href: "/clarity-blueprint" },
+    { name: "Shows", href: "/#shows" },
+    { name: "Notes", href: "/notes" }, // Added the notes link here for easy navigation
   ];
 
   return (
@@ -32,13 +32,13 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
           scrolled 
-            ? "py-3 bg-[#050a12]/40 backdrop-blur-xl border-b border-white/10" 
+            ? "py-3 bg-[#050a12]/80 backdrop-blur-xl border-b border-white/10" 
             : "py-6 bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           
-          {/* Logo with entrance animation */}
+          {/* Logo */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -48,8 +48,8 @@ export default function Navbar() {
               <Image
                 src="/logo.png"
                 alt="Brenda Keya"
-                width={130}
-                height={80}
+                width={110} // Slightly smaller logo for better clearance
+                height={70}
                 priority
                 className="brightness-0 invert transition-all duration-300 group-hover:scale-105"
               />
@@ -68,24 +68,22 @@ export default function Navbar() {
                 >
                   <Link 
                     href={link.href}
-                    className="relative text-[13px] font-bold uppercase tracking-[0.2em] text-white/70 hover:text-white transition-colors duration-300 group"
+                    className="relative text-[11px] font-bold uppercase tracking-[0.25em] text-white/60 hover:text-white transition-colors duration-300 group"
                   >
                     {link.name}
-                    {/* Animated Underline */}
                     <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-pink-500 transition-all duration-300 group-hover:w-full" />
                   </Link>
                 </motion.li>
               ))}
             </ul>
 
-            {/* Book Me Button - Matching the Premium Theme */}
             <motion.button
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowBookModal(true)}
-              className="px-6 py-2.5 bg-white text-[#050a12] text-[12px] font-black uppercase tracking-widest rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 shadow-xl shadow-white/5"
+              className="px-6 py-2.5 bg-white text-[#050a12] text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 shadow-xl shadow-white/5"
             >
               Book Me
             </motion.button>
@@ -108,10 +106,10 @@ export default function Navbar() {
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-[#050a12] border-b border-white/10 overflow-hidden"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="md:hidden absolute top-full left-0 w-full bg-[#050a12] border-b border-white/10 shadow-2xl"
             >
               <div className="flex flex-col p-8 gap-6">
                 {navLinks.map((link) => (
@@ -119,7 +117,7 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="text-2xl font-bold text-white tracking-tighter"
+                    className="text-xl font-bold text-white/80 hover:text-pink-500 transition-colors tracking-tight"
                   >
                     {link.name}
                   </Link>
@@ -139,7 +137,6 @@ export default function Navbar() {
         </AnimatePresence>
       </nav>
 
-      {/* Modal component */}
       {showBookModal && <BookMeModal onClose={() => setShowBookModal(false)} />}
     </>
   );

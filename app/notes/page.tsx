@@ -1,167 +1,184 @@
-// app/notes/page.tsx
-import Image from 'next/image'; // Make sure to import Image from next/image
+"use client";
+
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { ArrowRight, Quote, CheckCircle2, Globe, Leaf } from 'lucide-react';
 
 export default function NotesPage() {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
-      {/* Hero Section with Title and Author */}
-      <section className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden flex items-center justify-center text-white text-center">
-        {/* Background Image for the hero */}
+    <div className="min-h-screen bg-[#050a12] text-gray-200 selection:bg-pink-500/30">
+      
+      {/* Editorial Hero Section */}
+      <section className="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32">
         <Image
-          src="/images/cement-factory.jpg" // Placeholder: Image of African landscape/industry/climate
+          src="/images/cement-factory.jpg" 
           alt="Notes from the Field"
           fill
-          sizes="100vw"
-          className="object-cover brightness-50" // Darken image for text readability
+          priority
+          className="object-cover opacity-40 scale-105"
         />
-        <div className="relative z-10 p-4 max-w-4xl mx-auto">
-          <h1 className="text-xl md:text-2xl font-semibold mb-2">Notes from the Field – Issue 01</h1>
-          <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-4">The Silent Gold in Africa’s Climate Economy</h2>
-          <p className="text-lg md:text-xl font-medium">By Brenda Keya</p>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050a12]/80 via-transparent to-[#050a12]" />
+        
+        <div className="relative z-10 px-6 max-w-5xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="flex justify-center items-center gap-2 mb-6">
+    <Globe className="w-3 h-3 text-pink-500 animate-pulse" />
+    <span className="inline-block px-4 py-1 rounded-full border border-pink-500/30 bg-pink-500/10 text-pink-400 text-[10px] font-bold uppercase tracking-[0.3em]">
+      Dispatch — Issue 01
+    </span>
+  </div>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-tight mb-8 text-white tracking-tighter">
+              The Silent Gold in <br />
+              <span className="italic text-pink-500">Africa&apos;s Climate Economy</span>
+            </h1>
+            <div className="flex items-center justify-center gap-4 text-gray-400 font-medium tracking-widest uppercase text-xs">
+              <span className="w-8 h-[1px] bg-gray-700" />
+              By Brenda Keya
+              <span className="w-8 h-[1px] bg-gray-700" />
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Article Content Section */}
-      <article className="max-w-3xl mx-auto px-4 py-16 md:py-24">
-
-        {/* Paragraph 1 */}
-        <p className="mb-6 text-lg leading-relaxed">
-          When I walk through the factory fields at East African Portland Cement, I wasn&apos;t just looking at a production plant, I see a canvas for a new kind of story. A story not of machines and dust, but of climate, carbon and possibility.
+      {/* Article Content */}
+      <article className="max-w-3xl mx-auto px-6 py-24">
+        
+        {/* Intro with Drop Cap */}
+        <p className="mb-12 text-xl md:text-2xl leading-relaxed font-light text-gray-300 first-letter:text-7xl first-letter:font-serif first-letter:text-pink-500 first-letter:mr-3 first-letter:float-left">
+          When I walk through the factory fields at East African Portland Cement, I don&apos;t just see a production plant. I see a canvas for a new kind of story. A story not of machines and dust, but of climate, carbon, and radical possibility.
         </p>
 
-        {/* Image 1 (Factory/Industrial) */}
-        <div className="w-full h-80 relative my-10 rounded-lg overflow-hidden shadow-xl">
-          <Image
-            src="/images/cement-factory.jpg" // Placeholder: Image of cement factory/industrial site
-            alt="East African Portland Cement Factory"
-            fill
-            sizes="(max-width: 768px) 100vw, 700px"
-            className="object-cover"
-          />
-          <figcaption className="absolute bottom-4 left-4 text-white text-sm bg-black bg-opacity-50 px-3 py-1 rounded">
-            Observing the fields at East African Portland Cement.
-          </figcaption>
-        </div>
-
-        {/* Paragraph 2 & 3 */}
-        <p className="mb-6 text-lg leading-relaxed">
-          In the silence of those kilns and the smell of raw material, I keep asking:
-        </p>
-        <p className="mb-6 text-xl font-semibold italic text-blue-700">
-          What if this cement could tell a different story? One that heals the planet instead of just building it.
-        </p>
-
-        {/* Paragraph 4 */}
-        <p className="mb-6 text-lg leading-relaxed">
-          For months, I have been working with passionate teams; WakaGram researchers, field experts, WakaAfrica and bold thinkers, to draft a methodology for low-carbon cement, a product not just of calcium and clay, but of climate accountability.
-        </p>
-
-        {/* Image 2 (Biochar/Agriculture) */}
-        <div className="w-full h-80 relative my-10 rounded-lg overflow-hidden shadow-xl">
-          <Image
-            src="/images/biochar-process.jpg" // Placeholder: Image of biochar or agricultural waste
-            alt="Biochar production"
-            fill
-            sizes="(max-width: 768px) 100vw, 700px"
-            className="object-cover"
-          />
-          <figcaption className="absolute bottom-4 left-4 text-white text-sm bg-black bg-opacity-50 px-3 py-1 rounded">
-            Transforming agricultural waste into valuable resources.
-          </figcaption>
-        </div>
-
-        {/* Paragraph 5 & 6 */}
-        <p className="mb-6 text-lg leading-relaxed">
-          Then comes biochar, the hidden power in our agricultural waste. The kind of innovation you stumble upon and then wonder why the world hasn’t moved faster to adopt it.
-        </p>
-        <p className="mb-6 text-lg leading-relaxed">
-          From coffee husks in Central, to sugarcane stalks in Nyanza, to avocado prunings in Tigoni, I begin to see a network of carbon wealth lying in our soil, our dust, our waste.
-        </p>
-
-        {/* Image 3 (Collaboration/Deal) */}
-        <div className="w-full h-80 relative my-10 rounded-lg overflow-hidden shadow-xl">
-          <Image
-            src="/images/planet2050-deal.jpg" // Placeholder: Image of people collaborating, handshake, or environmental diagram
-            alt="Planet2050 deal"
-            fill
-            sizes="(max-width: 768px) 100vw, 700px"
-            className="object-cover"
-          />
-          <figcaption className="absolute bottom-4 left-4 text-white text-sm bg-black bg-opacity-50 px-3 py-1 rounded">
-            Forging new partnerships for a greener future.
-          </figcaption>
-        </div>
-
-        {/* Paragraph 7 & 8 */}
-        <p className="mb-6 text-lg leading-relaxed">
-          This is where Planet2050 enters the scene.
-        </p>
-        <p className="mb-6 text-lg leading-relaxed">
-          A deal on the table. An idea brewing:
-        </p>
-        <blockquote className="mb-6 px-4 py-3 bg-blue-50 border-l-4 border-blue-600 text-blue-800 italic">
-          “Enrich cement with biochar. Cut emissions. Capture carbon. Turn cement into climate currency.”
-        </blockquote>
-
-        {/* Bulleted List */}
-        <p className="mb-4 text-lg font-semibold">Suddenly, the dots begin to connect:</p>
-        <ul className="list-disc list-inside mb-6 text-lg leading-relaxed">
-          <li className="mb-2">Cement + Biochar = Triple the carbon offset</li>
-          <li className="mb-2">Communities benefit. Companies profit. The planet breathes easier.</li>
-        </ul>
-
-        {/* Paragraph 9 & 10 */}
-        <p className="mb-6 text-lg leading-relaxed">
-          But here’s the hard truth:
-        </p>
-        <p className="mb-6 text-lg leading-relaxed">
-          Many African institutions are not ready for the innovation they desperately need. The red tape is real. The slowness can kill dreams. And yet…
-        </p>
-        <p className="mb-6 text-lg leading-relaxed font-bold">
-          We pivot.
-        </p>
-        <p className="mb-6 text-lg leading-relaxed font-bold">
-          We partner better.
-        </p>
-        <p className="mb-6 text-lg leading-relaxed font-bold">
-          We structure smarter deals.
-        </p>
-        <p className="mb-6 text-lg leading-relaxed font-bold">
-          And we keep moving forward.
-        </p>
-
-        {/* Paragraph 11 */}
-        <p className="mb-8 text-lg leading-relaxed">
-          So I write this dispatch not just as a report — but as a declaration:
-        </p>
-
-        {/* Green Checkmark List */}
-        <ul className="mb-10 text-lg leading-relaxed">
-          <li className="flex items-center mb-3">
-            <span className="inline-block w-6 h-6 mr-3 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">✓</span>
-            Africa has what the world needs: land, biomass, brilliance.
-          </li>
-          <li className="flex items-center mb-3">
-            <span className="inline-block w-6 h-6 mr-3 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">✓</span>
-            Climate deals are not a favor — they are investments with returns.
-          </li>
-          <li className="flex items-center mb-3">
-            <span className="inline-block w-6 h-6 mr-3 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">✓</span>
-            I am not just a strategist or consultant. I am an architect of sustainable value chains and a broker of regenerative opportunities.
-          </li>
-        </ul>
-
-        {/* Call to Action */}
-        <div className="border-t border-gray-200 pt-8 mt-8 text-center">
-          <p className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
-            If you&apos;re a developer, investor, or visionary looking to build bold things in Africa&apos;s green space — let&apos;s talk.
+        {/* High-End Image Frame */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="relative group my-16"
+        >
+          <div className="absolute -inset-2 border border-white/5 rounded-2xl group-hover:border-pink-500/20 transition-all duration-500" />
+          <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
+            <Image
+              src="/images/cement-factory.jpg"
+              alt="East African Portland Cement Factory"
+              fill
+              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+            />
+          </div>
+          <p className="mt-4 text-[10px] uppercase tracking-widest text-gray-500 italic text-right">
+            01. Field observations at East African Portland Cement.
           </p>
-          <p className="text-lg text-gray-600">
-            You’ll be reading more of these Dispatches soon.
+        </motion.div>
+
+        <div className="space-y-8 text-lg leading-relaxed font-light text-gray-400">
+          <p>
+            In the silence of those kilns and the smell of raw material, I keep asking:
+          </p>
+          
+          <motion.p 
+            whileInView={{ x: [0, 10, 0] }}
+            className="text-3xl md:text-4xl font-serif italic text-white leading-snug py-8 border-y border-white/5"
+          >
+            &quot;What if this cement could tell a different story? One that <span className="text-pink-500">heals the planet</span> instead of just building it?&quot;
+          </motion.p>
+
+          <p>
+            For months, I have been working with passionate teams—WakaGram researchers, field experts, and bold thinkers—to draft a methodology for low-carbon cement. A product not just of calcium and clay, but of <strong>climate accountability</strong>.
           </p>
         </div>
+
+        {/* Biochar Section with unique background */}
+        <section className="my-20 p-10 bg-white/[0.02] border border-white/5 rounded-[2rem] relative overflow-hidden">
+            <Leaf className="absolute -right-10 -bottom-10 w-40 h-40 text-pink-500/5 rotate-12" />
+            
+            <div className="relative z-10">
+                <h3 className="text-2xl font-serif text-white mb-6">The Power of Biochar</h3>
+                <p className="mb-8">
+                  Then comes biochar, the hidden power in our agricultural waste. From coffee husks in Central to sugarcane stalks in Nyanza, I see a network of carbon wealth lying in our soil, our dust, our waste.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                        <span className="text-pink-500 font-bold block mb-1">Raw Waste</span>
+                        <span className="text-xs text-gray-500">Coffee husks, sugarcane, avocado prunings.</span>
+                    </div>
+                    <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                        <span className="text-pink-500 font-bold block mb-1">Carbon Wealth</span>
+                        <span className="text-xs text-gray-500">Transformed into climate currency.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* The "Deal" Quote */}
+        <div className="my-16 flex gap-6 items-start">
+            <Quote className="w-12 h-12 text-pink-500 shrink-0 opacity-50" />
+            <blockquote className="text-2xl md:text-3xl font-serif text-gray-200 italic leading-tight">
+              “Enrich cement with biochar. Cut emissions. Capture carbon. Turn cement into climate currency.”
+            </blockquote>
+        </div>
+
+        {/* Red Tape & Pivot Section */}
+        <div className="space-y-6 mb-20">
+            <h3 className="text-xl font-bold uppercase tracking-widest text-white">The Hard Truth</h3>
+            <p className="text-gray-400 font-light italic">
+              Many African institutions are not ready for the innovation they desperately need. The red tape is real. But here is how we respond:
+            </p>
+            <div className="flex flex-wrap gap-4">
+                {["We Pivot.", "We Partner Better.", "We Structure Smarter Deals."].map((text, i) => (
+                    <span key={i} className="px-6 py-3 bg-pink-500/10 border border-pink-500/20 text-pink-400 rounded-full text-sm font-bold">
+                        {text}
+                    </span>
+                ))}
+            </div>
+        </div>
+
+        {/* Final Declaration */}
+        <div className="border-t border-white/10 pt-16 mt-16">
+            <h3 className="text-3xl font-serif text-white mb-10 text-center">A Declaration</h3>
+            <div className="space-y-6">
+                {[
+                    "Africa has what the world needs: land, biomass, brilliance.",
+                    "Climate deals are not a favor — they are investments with returns.",
+                    "I am an architect of sustainable value chains and a broker of regenerative opportunities."
+                ].map((item, i) => (
+                    <motion.div 
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.2 }}
+                        key={i} 
+                        className="flex items-start gap-4"
+                    >
+                        <CheckCircle2 className="w-6 h-6 text-pink-500 shrink-0 mt-1" />
+                        <p className="text-lg text-gray-300 font-light">{item}</p>
+                    </motion.div>
+                ))}
+            </div>
+        </div>
+
+        {/* CTA Section */}
+       <motion.div 
+  whileHover={{ scale: 1.02 }}
+  className="mt-24 p-12 bg-gradient-to-br from-pink-600/20 to-blue-600/20 border border-white/10 rounded-[3rem] text-center"
+>
+  <h4 className="text-2xl md:text-3xl font-serif text-white mb-6">Let’s Build Bold Things</h4>
+  <p className="text-gray-400 mb-10 max-w-md mx-auto">
+    If you&apos;re a developer, investor, or visionary looking to build in Africa&apos;s green space—let&apos;s talk.
+  </p>
+  <button className="group bg-white text-black px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-pink-500 hover:text-white transition-all duration-300 flex items-center gap-2 mx-auto">
+    Start the Conversation
+    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+  </button>
+</motion.div>
 
       </article>
+
+      {/* Subtle Footer-like note */}
+      <footer className="pb-24 text-center">
+        <p className="text-gray-600 text-[10px] uppercase tracking-[0.5em]">Next Dispatch: coming soon</p>
+      </footer>
     </div>
   );
 }

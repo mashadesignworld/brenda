@@ -1,98 +1,120 @@
-// components/FooterSection/FooterSection.tsx
+"use client";
 
 import Link from 'next/link';
-import { Inter } from 'next/font/google'; // Assuming Inter is your main body font
-
-// Import Font Awesome icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter', // Define a CSS variable for Inter font
-});
+import { motion } from 'framer-motion';
+import { Instagram, Linkedin, Youtube, Phone, Mail, ArrowUpRight } from 'lucide-react';
 
 export default function FooterSection() {
+  const currentYear = new Date().getFullYear();
+
+  const footerLinks = {
+    "Get Started": [
+      { name: "Book A 1:1 Session", href: "/#aboutme" },
+      { name: "Clarity Blueprint", href: "/clarity-blueprint" },
+      { name: "Corporate Workshops", href: "mailto:brendakeyacoaching@gmail.com" },
+    ],
+    "Thought Leadership": [
+      { name: "Field Notes", href: "/notes" },
+      { name: "Sustainability Strategy", href: "/#publications" },
+      { name: "Presence Coaching", href: "/#aboutme" },
+    ],
+  };
+
+  const socials = [
+    { icon: <Instagram size={20} />, href: "https://instagram.com", label: "Instagram" },
+    { icon: <Linkedin size={20} />, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: <Youtube size={20} />, href: "https://youtube.com", label: "YouTube" },
+  ];
+
   return (
-    <footer className={`${inter.variable} font-sans`}>
-      {/* Top Section: White background with columns */}
-      <div className="bg-white py-12 px-6 md:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10 md:gap-8 lg:gap-12 text-center md:text-left">
-
-          {/* Column 1: Get Started */}
-          <div className="flex-1 min-w-[200px]">
-            <h3 className="font-semibold text-lg mb-2 text-gray-800">Get Started</h3>
-            <div className="w-20 h-0.5 bg-gray-300 mx-auto md:mx-0 mb-6"></div> {/* Underline */}
-            <ul className="list-none p-0 m-0 space-y-3 text-sm">
-              <li><Link href="#" className="text-gray-600 hover:text-gray-900 hover:underline transition-colors duration-200">Book A 15-Min 1:1 Session</Link></li>
-              <li><Link href="#" className="text-gray-600 hover:text-gray-900 hover:underline transition-colors duration-200">Explore Our Courses</Link></li>
-              <li><Link href="#" className="text-gray-600 hover:text-gray-900 hover:underline transition-colors duration-200">Book A Corporate Workshop</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 2: Free Resources */}
-          <div className="flex-1 min-w-[200px]">
-            <h3 className="font-semibold text-lg mb-2 text-gray-800">Free Resources</h3>
-            <div className="w-20 h-0.5 bg-gray-300 mx-auto md:mx-0 mb-6"></div> {/* Underline */}
-            <ul className="list-none p-0 m-0 space-y-3 text-sm">
-              <li><Link href="#" className="text-gray-600 hover:text-gray-900 hover:underline transition-colors duration-200">Attend Free Workshop</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 3: Connect With Us */}
-          <div className="flex-1 min-w-[200px]">
-            <h3 className="font-semibold text-lg mb-2 text-gray-800">Connect With Us</h3>
-            <div className="w-20 h-0.5 bg-gray-300 mx-auto md:mx-0 mb-6"></div> {/* Underline */}
-            
-            {/* Social Icons */}
-            <div className="flex justify-center md:justify-start gap-4 mb-4 text-2xl text-gray-600">
-              <Link href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors duration-200">
-                <FontAwesomeIcon icon={faInstagram} />
-              </Link>
-              <Link href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors duration-200">
-                <FontAwesomeIcon icon={faLinkedinIn} />
-              </Link>
-              <Link href="https://youtube.com" aria-label="YouTube" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors duration-200">
-                <FontAwesomeIcon icon={faYoutube} />
-              </Link>
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-2 text-sm text-gray-600">
-              <p className="flex items-center justify-center md:justify-start gap-2">
-                <FontAwesomeIcon icon={faPhone} className="text-base" />
-                <span>+254 720 975 755</span>
-              </p>
-              <p className="flex items-center justify-center md:justify-start gap-2">
-                <FontAwesomeIcon icon={faEnvelope} className="text-base" />
-                <span>brendakeyacoaching@gmail.com</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Section: Darker background with copyright and policies */}
-      <div className="bg-gray-800 text-white py-6 px-6 md:px-8 lg:px-12 text-sm">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
-          {/* Copyright and Company Info */}
-          <div className="text-center md:text-left">
-            <p className="mb-2 md:mb-0">© 2025 • BrendaKeya</p>
-            <p className="text-xs text-gray-400">
-              Presence & Expression Coach, Sustainability Branding Consultant.
+    <footer className="bg-[#050a12] text-gray-400 border-t border-white/5 pt-20 pb-10 px-6">
+      {/* --- START MOTION WRAPPER --- */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="max-w-7xl mx-auto"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+          
+          {/* Brand Column */}
+          <div className="space-y-6">
+            <h2 className="text-white text-2xl font-serif italic tracking-tighter">Brenda Keya.</h2>
+            <p className="text-sm leading-relaxed max-w-xs">
+              Architect of sustainable value chains and broker of regenerative opportunities across Africa.
             </p>
+            <div className="flex gap-4">
+              {socials.map((social, i) => (
+                <Link 
+                  key={i} 
+                  href={social.href} 
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-all duration-300"
+                >
+                  {social.icon}
+                </Link>
+              ))}
+            </div>
           </div>
 
-          {/* Policy Links */}
-          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
-            <Link href="#" className="hover:underline transition-colors duration-200">Privacy Policy</Link>
-            <Link href="#" className="hover:underline transition-colors duration-200">Terms and Conditions</Link>
+          {/* Links Columns */}
+          {Object.entries(footerLinks).map(([title, links]) => (
+            <div key={title}>
+              <h3 className="text-white text-[10px] uppercase tracking-[0.3em] font-bold mb-8">{title}</h3>
+              <ul className="space-y-4">
+                {links.map((link) => (
+                  <li key={link.name}>
+                    <Link 
+                      href={link.href} 
+                      className="group flex items-center gap-2 text-sm hover:text-pink-500 transition-colors"
+                    >
+                      {link.name}
+                      <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-all -translate-y-1" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          {/* Contact Column */}
+          <div>
+            <h3 className="text-white text-[10px] uppercase tracking-[0.3em] font-bold mb-8">Direct Contact</h3>
+            <div className="space-y-6">
+              <a href="tel:+254720975755" className="flex items-center gap-4 hover:text-white transition-colors group">
+                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-pink-500/20">
+                  <Phone size={16} className="text-pink-500" />
+                </div>
+                <span className="text-sm">+254 720 975 755</span>
+              </a>
+              <a href="mailto:brendakeyacoaching@gmail.com" className="flex items-center gap-4 hover:text-white transition-colors group">
+                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-pink-500/20">
+                  <Mail size={16} className="text-pink-500" />
+                </div>
+                <span className="text-sm truncate">brendakeyacoaching@gmail.com</span>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-[10px] uppercase tracking-widest text-gray-600">
+            © {currentYear} Brenda Keya • All Rights Reserved
+          </div>
+          
+          <div className="flex gap-8 text-[10px] uppercase tracking-widest">
+            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <span className="text-[10px] uppercase tracking-widest font-bold text-white">Available for Projects</span>
+          </div>
+        </div>
+      </motion.div> 
+      {/* --- END MOTION WRAPPER --- */}
     </footer>
   );
 }

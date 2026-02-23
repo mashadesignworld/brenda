@@ -41,9 +41,10 @@ export default function RootLayout({
       className={`${ebGaramond.variable} ${greatVibes.variable} ${dancingScript.variable}`}
     >
       <body>
-        <Navbar />
         <div className="grain-bg" />
         <Cursor />
+        <Navbar />
+        
   <ClientLayoutWrapper>
     {children}
   </ClientLayoutWrapper>

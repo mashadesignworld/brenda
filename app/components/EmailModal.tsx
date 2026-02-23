@@ -1,9 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { X, ArrowRight, ShieldCheck } from "lucide-react";
+import toast from 'react-hot-toast';
 
 export default function EmailModal({ onClose }: { onClose: () => void }) {
+  const [isSending, setIsSending] = useState(false);
+
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -12,109 +16,136 @@ export default function EmailModal({ onClose }: { onClose: () => void }) {
     return () => window.removeEventListener("keydown", handleEsc);
   }, [onClose]);
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSending(true);
+    
+    const tid = toast.loading("Preparing your blueprint...");
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      whatsapp: formData.get("whatsapp"),
+    };
+
+    try {
+      const res = await fetch("/api/sendMail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        toast.success("The blueprint is on its way to your inbox.", { 
+          id: tid,
+          icon: '🖋️',
+          style: {
+            borderRadius: '20px',
+            background: '#0a121e',
+            color: '#fff',
+            border: '1px solid #d4a34a33',
+          }
+        });
+        form.reset();
+        setTimeout(onClose, 2500);
+      } else {
+        const err = await res.json();
+        throw new Error(err.message);
+      }
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "Something went wrong";
+      toast.error(errorMessage, { id: tid });
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[1000] bg-black/60 flex items-center justify-center px-4"
+        className="fixed inset-0 z-[1000] bg-[#050a12]/90 backdrop-blur-xl flex items-center justify-center px-4"
+        onClick={(e) => e.target === e.currentTarget && onClose()}
       >
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.8, opacity: 0 }}
-          className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl border border-pink-200 relative"
+          initial={{ scale: 0.9, opacity: 0, y: 20 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.9, opacity: 0, y: 20 }}
+          className="bg-[#0a121e] border border-white/10 p-8 md:p-12 rounded-[2.5rem] shadow-2xl max-w-lg w-full relative overflow-hidden"
+          onClick={(e) => e.stopPropagation()}
         >
+          {/* Subtle Gold Glow Background */}
+          <div className="absolute -top-24 -left-24 w-64 h-64 bg-[#d4a34a]/10 rounded-full blur-[100px] pointer-events-none" />
+
           <button
             onClick={onClose}
-            className="absolute top-3 right-4 text-gray-400 hover:text-black text-xl font-bold"
+            className="absolute top-6 right-6 text-white/30 hover:text-white transition-colors"
           >
-            ×
+            <X size={24} />
           </button>
 
-          <h2 className="text-2xl font-bold text-pink-600 mb-2">
-            Get the Clarity Blueprint
-          </h2>
-          <p className="text-gray-600 mb-6">
-            Enter your email and name to receive payment instructions and a bonus audio.
-          </p>
+          <div className="text-center mb-10">
+            <span className="text-[#d4a34a] uppercase tracking-[0.4em] text-[10px] font-bold block mb-3">
+              Direct Access
+            </span>
+            <h2 className="text-4xl font-serif italic text-white leading-tight">
+              Get the <br /> Clarity Blueprint
+            </h2>
+            <p className="text-gray-400 mt-4 text-sm font-light leading-relaxed max-w-[280px] mx-auto">
+              Instructions and your bonus audio are ready to be sent to your inbox.
+            </p>
+          </div>
 
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
-              const form = e.currentTarget as HTMLFormElement;
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <div className="relative">
+              <input
+                name="name"
+                type="text"
+                placeholder="Full Name"
+                required
+                className="w-full bg-white/5 border-b border-white/10 px-4 py-4 text-white placeholder:text-gray-600 outline-none transition-all focus:border-[#d4a34a] rounded-t-lg"
+              />
+            </div>
+            
+            <div className="relative">
+              <input
+                name="email"
+                type="email"
+                placeholder="Email Address"
+                required
+                className="w-full bg-white/5 border-b border-white/10 px-4 py-4 text-white placeholder:text-gray-600 outline-none transition-all focus:border-[#d4a34a] rounded-t-lg"
+              />
+            </div>
 
-              const nameInput = form.elements.namedItem("name") as HTMLInputElement | null;
-              const emailInput = form.elements.namedItem("email") as HTMLInputElement | null;
-              const whatsappInput = form.elements.namedItem("whatsapp") as HTMLInputElement | null;
+            <div className="relative">
+              <input
+                name="whatsapp"
+                type="tel"
+                placeholder="WhatsApp Number (Optional)"
+                className="w-full bg-white/5 border-b border-white/10 px-4 py-4 text-white placeholder:text-gray-600 outline-none transition-all focus:border-[#d4a34a] rounded-t-lg"
+              />
+            </div>
 
-              if (!nameInput || !emailInput) {
-                alert("Please enter all required fields.");
-                return;
-              }
-
-              const name = nameInput.value.trim() || "Guest";
-              const email = emailInput.value.trim();
-              const whatsapp = whatsappInput?.value.trim() || "";
-
-              try {
-                const res = await fetch("/api/sendMail", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ name, email, whatsapp }),
-                });
-
-                if (res.ok) {
-                  alert("🎉 Email sent! Check your inbox.");
-                  form.reset();
-                  onClose(); // Close modal after success
-                } else {
-                  const err = await res.json();
-                  alert("❌ Error: " + err.message);
-                }
-              } catch (err) {
-                console.error(err);
-                alert("❌ Server error. Please try again.");
-              }
-            }}
-            className="flex flex-col gap-4"
-          >
-            <input
-              name="name"
-              type="text"
-              placeholder="Your Full Name"
-              required
-              className="w-full px-4 py-3 border border-pink-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"
-            />
-            <input
-              name="email"
-              type="email"
-              placeholder="Your Email Address"
-              required
-              className="w-full px-4 py-3 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-            <input
-              name="whatsapp"
-              type="tel"
-              placeholder="WhatsApp Number (Optional)"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
-            />
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-blue-600 to-pink-600 text-white py-3 rounded-lg font-semibold text-lg shadow-lg hover:opacity-90 transition"
+              disabled={isSending}
+              className="w-full bg-[#d4a34a] hover:bg-white text-black py-5 rounded-xl font-bold uppercase tracking-[0.2em] text-[10px] shadow-lg transition-all duration-500 flex items-center justify-center gap-3 group"
             >
-              Send Instructions
+              {isSending ? "Processing..." : "Receive the Blueprint"}
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
 
-          <p className="text-xs text-gray-500 mt-4 text-center">
-            Your info is safe & secure. You agree to our{" "}
-            <a href="#" className="underline hover:text-pink-600">
-              Privacy Policy
-            </a>
-            .
-          </p>
+          <div className="mt-8 flex items-center justify-center gap-2 text-white/20">
+            <ShieldCheck size={14} />
+            <p className="text-[10px] uppercase tracking-widest">
+              Secure & Encrypted Delivery
+            </p>
+          </div>
         </motion.div>
       </motion.div>
     </AnimatePresence>

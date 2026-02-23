@@ -18,7 +18,7 @@ export default function FooterSection({ openBooking }: FooterSectionProps) {
     "Get Started": [
       { name: "Book A 1:1 Session", action: "book" },
       { name: "Clarity Blueprint", href: "/clarity-blueprint" },
-      { name: "Corporate Workshops", href: "mailto:brendakeyacoaching@gmail.com" },
+      { name: "Corporate Workshops", action: "book" },
     ],
     "Thought Leadership": [
       { name: "Field Notes", href: "/notes" },

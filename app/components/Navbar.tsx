@@ -48,8 +48,8 @@ export default function Navbar() {
               <Image
                 src="/logo.png"
                 alt="Brenda Keya"
-                width={110} // Slightly smaller logo for better clearance
-                height={70}
+                width={150} // Slightly smaller logo for better clearance
+                height={110}
                 priority
                 className="brightness-0 invert transition-all duration-300 group-hover:scale-105"
               />

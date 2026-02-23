@@ -6,8 +6,17 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import BookMeModal from "./BookMeModal";
 import Magnetic from "./Magnetic";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isGoldPage = pathname === '/clarity-blueprint';
+
+  // Theme Variables
+  const accentColor = isGoldPage ? "text-[#d4a34a]" : "text-pink-500";
+  const accentBg = isGoldPage ? "bg-[#d4a34a]" : "bg-pink-500";
+  const accentBorder = isGoldPage ? "border-[#d4a34a]/30" : "border-pink-500/30";
+
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showBookModal, setShowBookModal] = useState(false);
@@ -69,10 +78,10 @@ export default function Navbar() {
                 >
                   <Link 
                     href={link.href}
-                    className="relative text-[11px] font-bold uppercase tracking-[0.25em] text-white/60 hover:text-white transition-colors duration-300 group"
+                    className={`relative text-[11px] font-bold uppercase tracking-[0.25em] text-white/60 hover:text-white transition-colors duration-300 group ${accentColor}`}
                   >
                     {link.name}
-                    <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-pink-500 transition-all duration-300 group-hover:w-full" />
+                    <span className={`absolute -bottom-2 left-0 w-0 h-[1px] ${accentBg} transition-all duration-300 group-hover:w-full`} />
                   </Link>
                 </motion.li>
               ))}
@@ -84,7 +93,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowBookModal(true)}
-              className="px-6 py-2.5 bg-white text-[#050a12] text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 shadow-xl shadow-white/5"
+              className={`px-6 py-2.5 bg-white text-[#050a12] text-[10px] font-black uppercase tracking-widest rounded-full ${accentBorder} ${accentBg} transition-all duration-300 shadow-xl shadow-white/5`}
             >
               Book Me
             </motion.button>

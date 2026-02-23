@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Anchor, Mic2, Zap, Heart, Calendar, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import EmailModal from "../components/EmailModal";
+import { Reveal } from "../components/Reveal";
 
 export default function ClarityBlueprint() {
   const [showModal, setShowModal] = useState(false);
@@ -31,12 +32,25 @@ export default function ClarityBlueprint() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-[#d4a34a] uppercase tracking-[0.4em] text-xs font-bold mb-4 block">The Signature Guide</span>
-            <h1 className="text-6xl md:text-[120px] font-serif font-light tracking-tighter mb-8 leading-none">
-              The Clarity <br />
-              <span className="italic text-[#d4a34a]">Blueprint</span>
-            </h1>
-            
+            <span className="text-[#d4a34a] uppercase tracking-[0.5em] text-[10px] font-black mb-6 block">
+  The Signature Guide
+</span>
+
+<h1 className="flex flex-col text-6xl md:text-[120px] font-serif font-light tracking-tighter mb-8 leading-none">
+  {/* LINE 1 */}
+  <div className="block">
+    <Reveal>The Clarity</Reveal>
+  </div>
+
+  {/* LINE 2 - Notice: No <br /> tag here! */}
+  <div className="block -mt-2 md:-mt-8 lg:-mt-6">
+    <Reveal>
+      <span className="italic text-[#d4a34a] pl-4 md:pl-24">
+        Blueprint
+      </span>
+    </Reveal>
+  </div>
+</h1>
             <div className="w-24 h-[1px] bg-[#d4a34a]/50 mx-auto mb-8" />
             
             <p className="text-xl md:text-2xl font-light text-gray-300 italic mb-10 max-w-2xl mx-auto">

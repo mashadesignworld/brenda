@@ -6,6 +6,7 @@ import { Anchor, Mic2, Zap, Heart, Calendar, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import EmailModal from "../components/EmailModal";
 import { Reveal } from "../components/Reveal";
+import FAQSection from "../components/FAQSection";
 
 export default function ClarityBlueprint() {
   const [showModal, setShowModal] = useState(false);
@@ -233,7 +234,7 @@ export default function ClarityBlueprint() {
     </div>
   </div>
 </section>
-
+<FAQSection />
       {/* Modal */}
       {showModal && <EmailModal onClose={() => setShowModal(false)} />}
     </div>

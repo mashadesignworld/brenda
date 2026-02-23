@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Instagram, Linkedin, Youtube, Phone, Mail, ArrowUpRight } from 'lucide-react';
 import Magnetic from './Magnetic';
+import { usePathname } from 'next/navigation';
 
 interface FooterSectionProps {
   openBooking: () => void;
@@ -13,6 +14,16 @@ type FooterLink =
   | { name: string; action: "book" };
 
 export default function FooterSection({ openBooking }: FooterSectionProps) {
+  const pathname = usePathname();
+  const isGold = pathname === '/clarity-blueprint';
+  
+  // 2. Define theme colors based on the page
+  const themeColor = isGold ? "text-[#d4a34a]" : "text-pink-500";
+  const themeBgHover = isGold ? "hover:bg-[#d4a34a]" : "hover:bg-pink-500";
+  const themeBorderHover = isGold ? "hover:border-[#d4a34a]" : "hover:border-pink-500";
+  const themeIconBg = isGold ? "group-hover:bg-[#d4a34a]/20" : "group-hover:bg-pink-500/20";
+  const themeHoverColor = isGold ? "hover:text-[#d4a34a]" : "hover:text-pink-500";
+  const themeArrowColor = isGold ? "text-[#d4a34a]" : "text-pink-500";
   const currentYear = new Date().getFullYear();
 
   const footerLinks : Record<string, FooterLink[]>  = {
@@ -58,7 +69,7 @@ export default function FooterSection({ openBooking }: FooterSectionProps) {
                 <Link 
                   key={i} 
                   href={social.href} 
-                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-all duration-300"
+                  className={`w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-all duration-300 ${themeBgHover} ${themeBorderHover} ${themeIconBg}`}
                 >
                   {social.icon}
                 </Link>
@@ -79,23 +90,23 @@ export default function FooterSection({ openBooking }: FooterSectionProps) {
       <button
         type="button"
         onClick={openBooking}
-        className="group flex items-center gap-2 text-sm hover:text-pink-500 transition-colors"
+        className={`group flex items-center gap-2 text-sm text-gray-400 transition-colors hover: ${themeHoverColor}`}
       >
         {link.name}
         <ArrowUpRight
           size={14}
-          className="opacity-0 group-hover:opacity-100 transition-all -translate-y-1"
+          className="opacity-0 group-hover:opacity-100 transition-all -translate-y-1 hover:${themeColor}"
         />
       </button>
     ) : (
       <Link
         href={link.href}
-        className="group flex items-center gap-2 text-sm hover:text-pink-500 transition-colors"
+        className={`group flex items-center gap-2 text-sm ${themeHoverColor} transition-colors`}
       >
         {link.name}
         <ArrowUpRight
           size={14}
-          className="opacity-0 group-hover:opacity-100 transition-all -translate-y-1"
+          className={`opacity-0 group-hover:opacity-100 transition-all -translate-y-1 ${themeArrowColor}`}
         />
       </Link>
     )}
@@ -111,13 +122,13 @@ export default function FooterSection({ openBooking }: FooterSectionProps) {
             <div className="space-y-6">
               <a href="tel:+254720975755" className="flex items-center gap-4 hover:text-white transition-colors group">
                 <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-pink-500/20">
-                  <Phone size={16} className="text-pink-500" />
+                  <Phone size={16} className={themeColor} />
                 </div>
                 <span className="text-sm">+254 720 975 755</span>
               </a>
               <a href="mailto:brendakeyacoaching@gmail.com" className="flex items-center gap-4 hover:text-white transition-colors group">
                 <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-pink-500/20">
-                  <Mail size={16} className="text-pink-500" />
+                  <Mail size={16} className={`${themeColor}`} />
                 </div>
                 <span className="text-sm truncate">brendakeyacoaching@gmail.com</span>
               </a>

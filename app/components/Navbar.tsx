@@ -15,7 +15,7 @@ export default function Navbar() {
   // Theme Variables
   const accentColor = isGoldPage ? "text-[#d4a34a]" : "text-pink-500";
   const accentBg = isGoldPage ? "bg-[#d4a34a]" : "bg-pink-500";
-  const accentBorder = isGoldPage ? "border-[#d4a34a]/30" : "border-pink-500/30";
+  const buttonBorder = isGoldPage ? "border-[#d4a34a]/30" : "border-pink-500/30";
 
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -93,7 +93,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowBookModal(true)}
-              className={`px-6 py-2.5 bg-white text-[#050a12] text-[10px] font-black uppercase tracking-widest rounded-full ${accentBorder} ${accentBg} transition-all duration-300 shadow-xl shadow-white/5`}
+              className={`px-6 py-2.5 bg-white text-[#050a12] text-[10px] font-black uppercase tracking-widest rounded-full ${buttonBorder} hover:text-yellow-400 transition-all duration-300 shadow-xl shadow-white/5`}
             >
               Book Me
             </motion.button>

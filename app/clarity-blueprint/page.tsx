@@ -131,7 +131,7 @@ export default function ClarityBlueprint() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="group p-8 rounded-3xl bg-white/[0.03] border border-white/10 hover:bg-[#d4a34a]/5 transition-all duration-500 text-center"
+                className="group p-8 rounded-3xl bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-[#d4a34a]/40 hover:bg-[#d4a34a]/10 transition-all duration-700 text-center shadow-[0_8px_32px_0_rgba(0,0,0,0.8)]"
               >
                 <step.icon className="w-10 h-10 mx-auto mb-6 text-[#d4a34a] stroke-[1px] group-hover:scale-110 transition-transform" />
                 <p className="text-[10px] uppercase tracking-[0.2em] text-[#d4a34a] mb-3 font-black">
@@ -154,46 +154,71 @@ export default function ClarityBlueprint() {
       </section>
 
       {/* AUTHOR SECTION */}
-      <section className="py-32 px-6 bg-[#080f1a] border-t border-white/5">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-          <div className="relative group">
-            {/* The Signature Frame */}
-            <div className="absolute -inset-4 border border-[#d4a34a]/30 rounded-2xl group-hover:inset-0 transition-all duration-500" />
-            <Image
-              src="/brendapp2.jpeg"
-              alt="Brenda N. Keya"
-              width={600}
-              height={700}
-              className="relative rounded-xl grayscale hover:grayscale-0 transition-all duration-700"
-            />
+    {/* AUTHOR SECTION - Editorial Overlap */}
+<section className="py-40 px-6 bg-[#050a12] relative overflow-hidden">
+  <div className="max-w-6xl mx-auto">
+    <div className="flex flex-col md:flex-row items-center">
+      
+      {/* LEFT: The Image with Decorative Frame */}
+      <motion.div 
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className="relative w-full md:w-1/2 z-10"
+      >
+        <div className="relative group">
+          {/* The "Signature" Frame that floats behind */}
+          <div className="absolute -inset-4 border border-[#d4a34a]/20 rounded-2xl translate-x-4 translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700" />
+          
+          <Image
+            src="/brendapp2.jpeg"
+            alt="Brenda N. Keya"
+            width={600}
+            height={800}
+            className="relative rounded-xl grayscale hover:grayscale-0 transition-all duration-1000 object-cover shadow-2xl"
+          />
+        </div>
+      </motion.div>
+
+      {/* RIGHT: The Floating Text Box */}
+      <motion.div 
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="w-full md:w-3/5 md:-ml-20 z-20 mt-12 md:mt-0"
+      >
+        <div className="bg-[#080f1a]/80 backdrop-blur-xl border border-white/10 p-8 md:p-16 rounded-[2rem] shadow-2xl">
+          <span className="text-[#d4a34a] uppercase tracking-[0.5em] text-[10px] font-black mb-6 block">
+            The Architect
+          </span>
+          
+          <h2 className="text-5xl md:text-7xl font-serif mb-8 leading-tight">
+            Brenda N. <br />
+            <span className="italic text-[#d4a34a]">Keya</span>
+          </h2>
+
+          <div className="space-y-6 text-gray-400 text-lg font-light leading-relaxed">
+            <p>
+              Brenda N. Keya is an Alignment & Expression Strategist working at the intersection of personal clarity and leadership presence.
+            </p>
+            <p>
+              With a background in psychology and diplomacy, she helps leaders align their internal conviction with their external communication.
+            </p>
           </div>
 
-          <div className="space-y-8">
-            <div>
-              <span className="text-[#d4a34a] uppercase tracking-[0.3em] text-xs font-bold mb-4 block">The Architect</span>
-              <h2 className="text-5xl md:text-6xl font-serif">Brenda N. Keya</h2>
-              <p className="text-[#d4a34a] italic mt-2 text-xl">Founder, The Aligned Voice Africa</p>
-            </div>
-
-            <div className="space-y-6 text-gray-400 text-lg font-light leading-relaxed">
-              <p>Brenda N. Keya is an Alignment & Expression Strategist working at the intersection of personal clarity and leadership presence.</p>
-              <p>With a background in psychology and diplomacy, she helps leaders align their internal conviction with their external communication.</p>
-            </div>
-
-            <div className="p-8 border-l border-[#d4a34a]/50 bg-white/[0.02] italic text-xl text-gray-300">
-              &quot;Your voice is not something to find. It is something to <span className="text-white font-medium">remember</span>.&quot;
-            </div>
-
-            <button 
-              onClick={() => setShowModal(true)}
-              className="inline-flex items-center gap-4 text-[#d4a34a] font-bold uppercase tracking-[0.2em] text-xs group"
-            >
-              Get Your Blueprint Now
-              <div className="w-12 h-[1px] bg-[#d4a34a] group-hover:w-20 transition-all" />
-            </button>
+          {/* The Signature Quote - Now styled as a pull-quote */}
+          <div className="mt-12 pt-12 border-t border-white/5 relative">
+            <span className="absolute top-8 left-0 text-6xl font-serif text-[#d4a34a]/20 italic">&quot;</span>
+            <p className="italic text-xl md:text-2xl text-gray-300 pl-8">
+              Your voice is not something to find. It is something to <span className="text-white font-medium underline decoration-[#d4a34a]/30 underline-offset-8">remember</span>.
+            </p>
           </div>
         </div>
-      </section>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
 
       {/* Modal */}
       {showModal && <EmailModal onClose={() => setShowModal(false)} />}

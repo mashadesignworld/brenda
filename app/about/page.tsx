@@ -44,10 +44,10 @@ export default function AboutPage() {
       className="md:col-span-7 relative aspect-[4/5] md:aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/10"
     >
       <Image
-        src="/brendapp2.jpeg"
+        src="/brendapp1.jpeg"
         alt="Brenda Keya"
         fill
-        className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-1000"
+        className="object-cover object-center grayscale hover:grayscale-none transition-all duration-1000 "
         priority
       />
       <div className="absolute inset-0 bg-gradient-to-r from-[#050a12]/40 to-transparent" />
@@ -102,10 +102,10 @@ export default function AboutPage() {
                 <div className="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-500">
                   <Mic2 size={24} />
                 </div>
-                <h3 className="text-2xl font-serif text-white uppercase tracking-widest text-sm">Presence & Expression</h3>
+                <h3 className="text-2xl font-serif text-white uppercase tracking-widest ">Presence & Expression</h3>
               </div>
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10">
-                <Image src="/2.jpg" alt="Coaching" fill className="object-cover grayscale" />
+                <Image src="/2.jpg" alt="Coaching" fill className="object-cover grayscale hover:grayscale-0" />
               </div>
               <p className="text-gray-400 font-light leading-relaxed italic">
                 &quot;Voice isn’t something to find but something to remember. Presence is not volume, but alignment.&quot;
@@ -118,7 +118,7 @@ export default function AboutPage() {
                 <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
                   <Leaf size={24} />
                 </div>
-                <h3 className="text-2xl font-serif text-white uppercase tracking-widest text-sm">Diplomacy & Sustainability</h3>
+                <h3 className="text-2xl font-serif text-white uppercase tracking-widest">Diplomacy & Sustainability</h3>
               </div>
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10">
                 <Image src="/3.jpg" alt="Diplomacy" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />

@@ -24,7 +24,7 @@ export default function Navbar() {
     { name: "About", href: "/#aboutme" },
     { name: "Blueprint", href: "/clarity-blueprint" },
     { name: "Shows", href: "/#shows" },
-    { name: "Notes", href: "/notes" }, // Added the notes link here for easy navigation
+    { name: "Publications", href: "/notes" }, // Added the notes link here for easy navigation
   ];
 
   return (

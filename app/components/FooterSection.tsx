@@ -4,12 +4,19 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Instagram, Linkedin, Youtube, Phone, Mail, ArrowUpRight } from 'lucide-react';
 
-export default function FooterSection() {
+interface FooterSectionProps {
+  openBooking: () => void;
+}
+type FooterLink =
+  | { name: string; href: string }
+  | { name: string; action: "book" };
+
+export default function FooterSection({ openBooking }: FooterSectionProps) {
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = {
+  const footerLinks : Record<string, FooterLink[]>  = {
     "Get Started": [
-      { name: "Book A 1:1 Session", href: "/#aboutme" },
+      { name: "Book A 1:1 Session", action: "book" },
       { name: "Clarity Blueprint", href: "/clarity-blueprint" },
       { name: "Corporate Workshops", href: "mailto:brendakeyacoaching@gmail.com" },
     ],
@@ -62,17 +69,35 @@ export default function FooterSection() {
             <div key={title}>
               <h3 className="text-white text-[10px] uppercase tracking-[0.3em] font-bold mb-8">{title}</h3>
               <ul className="space-y-4">
-                {links.map((link) => (
-                  <li key={link.name}>
-                    <Link 
-                      href={link.href} 
-                      className="group flex items-center gap-2 text-sm hover:text-pink-500 transition-colors"
-                    >
-                      {link.name}
-                      <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-all -translate-y-1" />
-                    </Link>
-                  </li>
-                ))}
+               
+ {links.map((link) => (
+  <li key={link.name}>
+    {"action" in link ? (
+      <button
+        type="button"
+        onClick={openBooking}
+        className="group flex items-center gap-2 text-sm hover:text-pink-500 transition-colors"
+      >
+        {link.name}
+        <ArrowUpRight
+          size={14}
+          className="opacity-0 group-hover:opacity-100 transition-all -translate-y-1"
+        />
+      </button>
+    ) : (
+      <Link
+        href={link.href}
+        className="group flex items-center gap-2 text-sm hover:text-pink-500 transition-colors"
+      >
+        {link.name}
+        <ArrowUpRight
+          size={14}
+          className="opacity-0 group-hover:opacity-100 transition-all -translate-y-1"
+        />
+      </Link>
+    )}
+  </li>
+))}
               </ul>
             </div>
           ))}

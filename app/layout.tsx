@@ -1,11 +1,11 @@
 // app/layout.tsx
 import './globals.css';
 import { EB_Garamond, Great_Vibes, Dancing_Script } from 'next/font/google'; // Import new fonts
-import FooterSection from './components/FooterSection';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import Navbar from './components/Navbar'; // Ensure Navbar is imported correctly
 import { Playfair_Display, Inter } from "next/font/google";
 import { Toaster } from 'react-hot-toast';
+import ClientLayoutWrapper from "./components/ClientLayoutWrapper";
 
 // Configure EB Garamond
 const ebGaramond = EB_Garamond({
@@ -41,7 +41,9 @@ export default function RootLayout({
     >
       <body>
         <Navbar />
-        {children}
+  <ClientLayoutWrapper>
+    {children}
+  </ClientLayoutWrapper>
         <Toaster 
           position="top-center" 
           containerStyle={{
@@ -54,7 +56,7 @@ export default function RootLayout({
             },
           }}
         />
-        <FooterSection />
+        
         {/* Ensure the FooterSection is included at the bottom of the layout */}
       </body>
     </html>

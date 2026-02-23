@@ -2,10 +2,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, useSpring } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 export default function Cursor() {
+    const pathname = usePathname();
   const [isMobile, setIsMobile] = useState(false);
-
+const isGoldPage = pathname === '/clarity-blueprint';
+  const colorClass = isGoldPage ? "border-[#d4a34a]/50" : "border-pink-[#d4a34a]/50";
+  const dotClass = isGoldPage ? "bg-[#d4a34a]" : "bg-pink-500";
   // Spring settings make the movement "lag" slightly behind the mouse for a smooth feel
   const mouseX = useSpring(0, { stiffness: 500, damping: 28 });
   const mouseY = useSpring(0, { stiffness: 500, damping: 28 });
@@ -30,14 +34,14 @@ export default function Cursor() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-8 h-8 rounded-full border border-pink-500/50 pointer-events-none z-[9999] flex items-center justify-center"
+      className={`fixed top-0 left-0 w-8 h-8 rounded-full border  pointer-events-none z-[9999] flex items-center justify-center ${colorClass}`}
       style={{
         x: mouseX,
         y: mouseY,
       }}
     >
       {/* Small dot in the center */}
-      <div className="w-1 h-1 bg-pink-500 rounded-full" />
+      <div className={`w-1 h-1 rounded-full ${dotClass}`} />
     </motion.div>
   );
 }

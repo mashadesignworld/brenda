@@ -22,7 +22,7 @@ html {
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background-color:#800080; /* Changed to Yellow */
+  background-color:#ec4899;
   transition: width 0.3s ease;
 }
 
@@ -32,10 +32,19 @@ html {
 
 /* Optional: If you want to force specific text colors on hover */
 .nav-link-underline-effect:hover {
-  color:rgb(203, 27, 165) !important; /* Changed to Yellow */
+color: #ec4899 !important; /* Keep the text pink on hover */
 }
 
 /* For the mobile menu links to also get the hover text color */
 .mobile-nav-link-hover-color:hover {
-  color:rgb(174, 10, 152) !important; /* Changed to Yellow */
+color: #ec4899 !important; /* Keep the text pink on hover */
+}
+.grain-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 50;
 }

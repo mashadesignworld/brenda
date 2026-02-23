@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import BookMeModal from "./BookMeModal";
+import Magnetic from "./Magnetic";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -76,7 +77,7 @@ export default function Navbar() {
                 </motion.li>
               ))}
             </ul>
-
+            <Magnetic>
             <motion.button
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -87,6 +88,7 @@ export default function Navbar() {
             >
               Book Me
             </motion.button>
+            </Magnetic>
           </div>
 
           {/* Mobile Toggle */}

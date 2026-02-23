@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'; // Ensure Navbar is imported correctly
 import { Playfair_Display, Inter } from "next/font/google";
 import { Toaster } from 'react-hot-toast';
 import ClientLayoutWrapper from "./components/ClientLayoutWrapper";
+import Cursor from './components/Cursor';
 
 // Configure EB Garamond
 const ebGaramond = EB_Garamond({
@@ -41,6 +42,8 @@ export default function RootLayout({
     >
       <body>
         <Navbar />
+        <div className="grain-bg" />
+        <Cursor />
   <ClientLayoutWrapper>
     {children}
   </ClientLayoutWrapper>

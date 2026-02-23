@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Instagram, Linkedin, Youtube, Phone, Mail, ArrowUpRight } from 'lucide-react';
+import Magnetic from './Magnetic';
 
 interface FooterSectionProps {
   openBooking: () => void;
@@ -53,6 +54,7 @@ export default function FooterSection({ openBooking }: FooterSectionProps) {
             </p>
             <div className="flex gap-4">
               {socials.map((social, i) => (
+                <Magnetic key={i}>
                 <Link 
                   key={i} 
                   href={social.href} 
@@ -60,6 +62,7 @@ export default function FooterSection({ openBooking }: FooterSectionProps) {
                 >
                   {social.icon}
                 </Link>
+                </Magnetic>
               ))}
             </div>
           </div>

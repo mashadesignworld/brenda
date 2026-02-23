@@ -32,7 +32,7 @@ export default function ClarityBlueprint() {
             transition={{ duration: 0.8 }}
           >
             <span className="text-[#d4a34a] uppercase tracking-[0.4em] text-xs font-bold mb-4 block">The Signature Guide</span>
-            <h1 className="text-6xl md:text-8xl font-serif font-light tracking-tighter mb-8 leading-none">
+            <h1 className="text-6xl md:text-[120px] font-serif font-light tracking-tighter mb-8 leading-none">
               The Clarity <br />
               <span className="italic text-[#d4a34a]">Blueprint</span>
             </h1>

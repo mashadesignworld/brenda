@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import EmailModal from "../components/EmailModal";
 import { Reveal } from "../components/Reveal";
 import FAQSection from "../components/FAQSection";
+import WhatsAppFloat from "../components/WhatsAppFloat";
 
 export default function ClarityBlueprint() {
   const [showModal, setShowModal] = useState(false);
@@ -235,6 +236,7 @@ export default function ClarityBlueprint() {
   </div>
 </section>
 <FAQSection />
+<WhatsAppFloat />
       {/* Modal */}
       {showModal && <EmailModal onClose={() => setShowModal(false)} />}
     </div>

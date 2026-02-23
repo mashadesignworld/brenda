@@ -69,7 +69,7 @@ export default function FooterSection({ openBooking }: FooterSectionProps) {
                 <Link 
                   key={i} 
                   href={social.href} 
-                  className={`w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-all duration-300 ${themeBgHover} ${themeBorderHover} ${themeIconBg}`}
+                  className={`w-10 h-10 rounded-full border border-white/10 flex items-center justify-center  transition-all duration-300 ${themeBgHover} ${themeBorderHover} ${themeIconBg}`}
                 >
                   {social.icon}
                 </Link>

@@ -21,6 +21,7 @@
       }
     ],
     "paths": {
+      "@prisma/client": ["./generated/client"],
       "@/*": ["./*"]
     }
   },

@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Target, User, Briefcase, HelpCircle, Phone } from "lucide-react";
 import toast from 'react-hot-toast';
+// 1. Import your confetti utility
+import { triggerSuccessConfetti } from "@/lib/confetti"; 
 
 export default function IntensiveBookingModal({ onClose }: { onClose: () => void }) {
   const [isSending, setIsSending] = useState(false);
@@ -33,16 +35,20 @@ export default function IntensiveBookingModal({ onClose }: { onClose: () => void
       });
 
       if (res.ok) {
+        // 2. TRIGGER THE GOLD CONFETTI HERE
+        triggerSuccessConfetti();
+        
         toast.success("Alignment Request Sent ✨", { id: tid });
+        
         setTimeout(() => {
           onClose();
           setIsSending(false);
-        }, 2000);
+        }, 2500); // Slightly increased to let users enjoy the effect
       } else {
         throw new Error("Submission failed");
       }
     } catch (error) {
-        console.error("Intensive Booking Error Detail:", error);
+      console.error("Intensive Booking Error Detail:", error);
       toast.error("Network error. Please try again.", { id: tid });
       setIsSending(false);
     }
@@ -64,6 +70,7 @@ export default function IntensiveBookingModal({ onClose }: { onClose: () => void
           className="relative bg-[#0a121e] border border-[#d4a34a]/20 p-8 md:p-12 rounded-[3rem] shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto selection:bg-[#d4a34a]/30"
           onClick={(e) => e.stopPropagation()}
         >
+          {/* ... all your existing JSX code ... */}
           {/* Decorative Elements */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#d4a34a]/5 blur-[60px] rounded-full pointer-events-none" />
           
@@ -84,7 +91,6 @@ export default function IntensiveBookingModal({ onClose }: { onClose: () => void
 
           <form onSubmit={handleSubmit} className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Name */}
               <div className="space-y-3">
                 <label className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold flex items-center gap-2">
                   <User size={12} className="text-[#d4a34a]" /> Full Name
@@ -99,7 +105,6 @@ export default function IntensiveBookingModal({ onClose }: { onClose: () => void
                 />
               </div>
 
-              {/* WhatsApp */}
               <div className="space-y-3">
                 <label className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold flex items-center gap-2">
                   <Phone size={12} className="text-[#d4a34a]" /> WhatsApp
@@ -115,7 +120,6 @@ export default function IntensiveBookingModal({ onClose }: { onClose: () => void
               </div>
             </div>
 
-            {/* Email */}
             <div className="space-y-3">
               <label className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">
                 Professional Email
@@ -130,7 +134,6 @@ export default function IntensiveBookingModal({ onClose }: { onClose: () => void
               />
             </div>
 
-            {/* Role */}
             <div className="space-y-3">
               <label className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold flex items-center gap-2">
                 <Briefcase size={12} className="text-[#d4a34a]" /> Leadership Context
@@ -145,7 +148,6 @@ export default function IntensiveBookingModal({ onClose }: { onClose: () => void
               />
             </div>
 
-            {/* Challenge */}
             <div className="space-y-3">
               <label className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold flex items-center gap-2">
                 <HelpCircle size={12} className="text-[#d4a34a]" /> The Core Challenge
@@ -161,7 +163,6 @@ export default function IntensiveBookingModal({ onClose }: { onClose: () => void
               />
             </div>
 
-            {/* Goal */}
             <div className="space-y-3">
               <label className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold flex items-center gap-2">
                 <Target size={12} className="text-[#d4a34a]" /> Strategic Goal

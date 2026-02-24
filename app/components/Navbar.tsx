@@ -35,6 +35,7 @@ export default function Navbar() {
     { name: "Blueprint", href: "/clarity-blueprint" },
     { name: "Shows", href: "/#shows" },
     { name: "Publications", href: "/notes" }, // Added the notes link here for easy navigation
+    { name: "Services", href: "/services" }, 
   ];
 
   return (

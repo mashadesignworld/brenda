@@ -7,8 +7,8 @@ import { usePathname } from 'next/navigation';
 export default function Cursor() {
     const pathname = usePathname();
   const [isMobile, setIsMobile] = useState(false);
- const isGoldPage = pathname === '/clarity-blueprint';
-  const colorClass = isGoldPage ? "border-[#d4a34a]/50" : "border-pink-[#d4a34a]/50";
+ const isGoldPage = pathname === '/clarity-blueprint' || pathname === '/services';
+  const colorClass = isGoldPage ? "border-[#d4a34a]/50" : "border-pink-500/50";
   const dotClass = isGoldPage ? "bg-[#d4a34a]" : "bg-pink-500";
   // Spring settings make the movement "lag" slightly behind the mouse for a smooth feel
   const mouseX = useSpring(0, { stiffness: 500, damping: 28 });

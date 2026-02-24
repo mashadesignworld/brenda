@@ -15,7 +15,7 @@ type FooterLink =
 
 export default function FooterSection({ openBooking }: FooterSectionProps) {
   const pathname = usePathname();
-  const isGold = pathname === '/clarity-blueprint';
+  const isGold = pathname === '/clarity-blueprint' || pathname === '/services'; // Footer is gold-themed on both the Blueprint and Services pages
   
   // 2. Define theme colors based on the page
   const themeColor = isGold ? "text-[#d4a34a]" : "text-pink-500";

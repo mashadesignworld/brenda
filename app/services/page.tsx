@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, CheckCircle2, Sparkles, ShieldCheck, Crown } from "lucide-react";
-import Link from "next/link";
+import IntensiveBookingModal from "../components/IntensiveBookingModal";
+import EmailModal from "../components/EmailModal"; // Your existing Blueprint modal
 
 const services = [
   {
@@ -53,13 +54,37 @@ const services = [
       "Strategic roadmap document"
     ],
     cta: "Apply for Mentorship",
-    href: "/apply",
+    href: "/",
     icon: <Crown className="w-5 h-5" />,
     style: "bg-white/[0.02] border-white/5"
   }
 ];
 
 export default function ServicesPage() {
+  // Track which modal is active: null, "BLUEPRINT", or "INTENSIVE"
+  const [activeModal, setActiveModal] = useState<"BLUEPRINT" | "INTENSIVE" | null>(null);
+
+  const handleServiceClick = (serviceTitle: string) => {
+  if (serviceTitle === "The Clarity Blueprint") {
+    setActiveModal("BLUEPRINT");
+  } else if (serviceTitle === "The Alignment Session") {
+    setActiveModal("INTENSIVE");
+  } else if (serviceTitle === "Command Your Space") {
+    // 1. Define the phone number (no '+' sign for the URL)
+    const phoneNumber = "254720975755"; 
+    
+    // 2. Create a professional pre-filled message
+    const message = encodeURIComponent(
+      "Hello Brenda, I am interested in the 'Command Your Space' 4-Week Private Mentorship. I would like to discuss the application process."
+    );
+    
+    // 3. Open WhatsApp in a new tab
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+  }
+
+
+
+  };
   return (
     <div className="bg-[#050a12] text-white min-h-screen pb-32">
       {/* Header Section */}
@@ -132,8 +157,10 @@ export default function ServicesPage() {
                 ))}
               </ul>
 
-              <Link href={service.href} className="mt-auto">
-                <button className={`w-full py-5 rounded-full font-bold uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 transition-all duration-300 ${
+             
+                <button
+                onClick={() => handleServiceClick(service.title)}
+                className={`w-full py-5 rounded-full font-bold uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 transition-all duration-300 ${
                   service.featured 
                   ? "bg-[#d4a34a] text-black hover:bg-white" 
                   : "bg-white/5 text-white border border-white/10 hover:border-[#d4a34a] hover:text-[#d4a34a]"
@@ -141,7 +168,7 @@ export default function ServicesPage() {
                   {service.cta}
                   <ArrowUpRight className="w-3 h-3" />
                 </button>
-              </Link>
+             
 
               {service.featured && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-black text-[9px] font-black uppercase tracking-[0.3em] px-4 py-1.5 rounded-full">
@@ -151,6 +178,14 @@ export default function ServicesPage() {
             </motion.div>
           ))}
         </div>
+        {/* MODAL RENDERING LOGIC */}
+      {activeModal === "BLUEPRINT" && (
+        <EmailModal onClose={() => setActiveModal(null)} />
+      )}
+
+      {activeModal === "INTENSIVE" && (
+        <IntensiveBookingModal onClose={() => setActiveModal(null)} />
+      )}
       </section>
 
       {/* Trust Quote */}

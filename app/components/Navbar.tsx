@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const isGoldPage = pathname === '/clarity-blueprint';
+  const isGoldPage = pathname === '/clarity-blueprint' || pathname === '/services'; 
 
   // Theme Variables
   const accentColor = isGoldPage ? "text-[#d4a34a]" : "text-pink-500";

@@ -32,10 +32,10 @@ export default function AboutSection() {
             className="relative w-full h-full z-10 overflow-hidden rounded-xl shadow-2xl shadow-black/50"
           >
             <Image
-              src="/4.jpg"
+              src="/brendapp2.jpeg"
               alt="Brenda Keya"
               fill
-              className="object-cover object-top pointer-events-none select-none grayscale hover:grayscale-0 transition-all duration-700 ease-in-out scale-110 hover:scale-100"
+              className="object-cover object-top pointer-events-none select-none  transition-all duration-700 ease-in-out scale-110 hover:scale-100"
               priority
             />
             {/* Subtle Overlay to blend with the site theme */}

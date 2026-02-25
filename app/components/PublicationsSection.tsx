@@ -25,7 +25,7 @@ export default function PublicationsSection() {
       year: "2025",
       description: "From coffee husks in Central, to sugarcane stalks in Nyanza, to avocado prunings in Tigoni, I begin to see a network of carbon wealth lying in our soil.",
       link: "/notes",
-      coverImage: "/images/book-cover1.jpg",
+      coverImage: "/images/brendapp3.jpeg",
       buttonText: "LISTEN NOW"
     },
     {

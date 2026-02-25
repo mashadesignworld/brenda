@@ -121,7 +121,7 @@ export default function AboutPage() {
                 <h3 className="text-2xl font-serif text-white uppercase tracking-widest">Diplomacy & Sustainability</h3>
               </div>
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10">
-                <Image src="/3.jpg" alt="Diplomacy" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                <Image src="/images/brendapp3.jpeg" alt="Diplomacy" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-700" />
               </div>
               <ul className="grid grid-cols-1 gap-4">
                 {["Carbon credit markets", "Green value chains", "Climate finance advocacy", "Policy harmonization"].map((item, i) => (
